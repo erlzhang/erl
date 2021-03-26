@@ -1,0 +1,16 @@
+.block {
+  margin-top: 3rem;
+}
+.block-title {
+  font-size: 1.35rem;
+  font-weight: normal;
+}
+.block ul {
+  padding-left: 20px;
+}
+.block ul > li {
+  line-height: 2;
+}
+.block ul > li a {
+  color: gray;
+}
