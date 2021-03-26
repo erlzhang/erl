@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import "../styles/index.css"
+import "../sass/main.scss"
 
 function Block({ children, title }) {
   let blockTitle = <h2 className="block-title">{ title }</h2>
@@ -23,7 +24,7 @@ function LabItem({ item }) {
 
 function LabIndex({ items }) {
   return (
-    <Block title="Something Interesting">
+    <Block title="🎄 Something Interesting">
       <ul>
         { items.map(item => <LabItem item={item}/>) }
       </ul>
@@ -41,7 +42,7 @@ function PostItem({ item }) {
 
 function Posts({ items }) {
   return (
-    <Block title="Recent Posts">
+    <Block title="🖊️ Recent Posts">
       <ul>
         { items.map(item => <PostItem item={item}></PostItem>) }
       </ul>
@@ -90,7 +91,9 @@ export const query = graphql`
       }
     }
     allMarkdownRemark(
-      sort: {fields: frontmatter___date, order: DESC}
+      sort: {fields: frontmatter___date, order: DESC},
+      limit: 5,
+      filter: {frontmatter: {showInIndex: {ne: true}}}
     ) {
       nodes {
         fields {
