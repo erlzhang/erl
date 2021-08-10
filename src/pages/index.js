@@ -1,10 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
 import "../styles/index.css"
-import "../sass/main.scss"
+//import "../sass/main.scss"
+import Layout from "../components/layout"
 
-function Block({ children, title }) {
+function Block({ children, title, link }) {
   let blockTitle = <h2 className="block-title">{ title }</h2>
   return (
     <div className="block">
@@ -17,15 +17,17 @@ function Block({ children, title }) {
 function LabItem({ item }) {
   return (
     <li className="lab-item">
-      <a href={item.url} target="_blank">{ item.title }</a>
+      <a href={item.url} target="_blank">
+        <img src={item.img} />
+      </a>
     </li>
   )
 }
 
 function LabIndex({ items }) {
   return (
-    <Block title="🎄 Something Interesting">
-      <ul>
+    <Block title="🎄 Something Interesting" link="/lab">
+      <ul className="labs-block clearfix">
         { items.map(item => <LabItem item={item}/>) }
       </ul>
     </Block>
@@ -42,7 +44,7 @@ function PostItem({ item }) {
 
 function Posts({ items }) {
   return (
-    <Block title="🖊️ Recent Posts">
+    <Block title="🖊️ Recent Posts" link="/blog">
       <ul>
         { items.map(item => <PostItem item={item}></PostItem>) }
       </ul>
@@ -50,21 +52,37 @@ function Posts({ items }) {
   )
 }
 
-function About({about}) {
+function About({about, children}) {
   return (
     <Block>
       <article className="content" dangerouslySetInnerHTML={{ __html: about.html }} />
+      { children }
     </Block>
+  )
+}
+
+function Social({items}) {
+  let labels = items.map((item) => {
+    return (
+      <a href={item.url} className="about-link">{ item.title }</a>
+    )
+  })
+  return (
+    <div className="social">
+      { labels }
+    </div>
   )
 }
 
 export default function Index({ data }) {
   let siteInfo = data.site.siteMetadata;
+  //<Posts items={data.allMarkdownRemark.nodes}></Posts>
   return (
     <Layout siteInfo={siteInfo}>
-      <About about={data.about}></About>
+      <About about={data.about}>
+        <Social items={data.allSocialYaml.nodes}></Social>
+      </About>
       <LabIndex items={data.allLabYaml.nodes}></LabIndex>
-      <Posts items={data.allMarkdownRemark.nodes}></Posts>
     </Layout>
   )
 }
@@ -77,10 +95,17 @@ export const query = graphql`
         title
       }
     }
+    allSocialYaml {
+      nodes {
+        title
+        url
+      }
+    }
     allLabYaml(sort: {fields: year, order: DESC}, limit: 10) {
       nodes {
         title
         url
+        img
       }
     }
     about: markdownRemark(frontmatter: {showInIndex: {eq: true}}) {

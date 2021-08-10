@@ -8,19 +8,11 @@
 @import "persephone/header";
 @import "persephone/content";
 
+// home
+@import "persephone/home";
+
 // 404
 @import "persephone/error";
-
-// archive
-@import "persephone/archive";
-
-// home
-@import "persephone/slides";
-
-//book
-@import "persephone/summary";
-@import "persephone/book";
-@import "persephone/chapter";
 
 //blog
 @import "persephone/blog";

@@ -1,0 +1,29 @@
+.block {
+  margin-top: 3rem;
+}
+.block-title {
+  font-size: 1.35rem;
+  font-weight: normal;
+  margin-bottom: 1rem;
+}
+.block ul {
+  padding-left: 20px;
+}
+.block ul > li {
+  line-height: 2;
+}
+.block ul > li a {
+  color: var(---gray);
+}
+.labs-block {
+  display: flex;
+}
+.lab-item {
+  width: 48%;
+  list-style: none;
+  border: 1px solid var(--light);
+  padding: 5px;
+  img {
+    width: 100%;
+  }
+}

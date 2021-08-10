@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "Title",
+    title: "Erl",
     description: "A web developer and minimalism."
   },
   plugins: [

@@ -2,6 +2,7 @@ import React from "react";
 
 import "normalize.css";
 import "../styles/common.css"
+//import "../sass/main.scss";
 
 import Header from "./header"
 

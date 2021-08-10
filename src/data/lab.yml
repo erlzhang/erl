@@ -1,7 +1,29 @@
 -
   title: A colorful snake 🐍 game by JavaScript only!
   url: https://baidu.com
-  img: ""
+  img: "https://raw.githubusercontent.com/erlzhang/erldesign/master/img/persephone.png?raw=true"
+  keywords:
+    - JavaScript
+  description: |
+    dafldjflas
+    dfasfasdfdsa
+    dfasfdsfsdafsd
+  year: 2018
+-
+  title: A colorful snake 🐍 game by JavaScript only!
+  url: https://baidu.com
+  img: "https://raw.githubusercontent.com/erlzhang/erldesign/master/img/dysis.png"
+  keywords:
+    - JavaScript
+  description: |
+    dafldjflas
+    dfasfasdfdsa
+    dfasfdsfsdafsd
+  year: 2018
+-
+  title: A colorful snake 🐍 game by JavaScript only!
+  url: https://baidu.com
+  img: "https://raw.githubusercontent.com/erlzhang/erldesign/master/img/sky.png"
   keywords:
     - JavaScript
   description: |
@@ -12,7 +34,52 @@
 -
   title: A ♟️ game by React
   url: https://baidu.com
-  img: ""
+  img: "https://raw.githubusercontent.com/erlzhang/jekyll-theme-arktos/master/screenshot.png"
+  keywords:
+    - JavaScript
+    - React
+  description: |
+    dafldjflas
+    dfasfasdfdsa
+    dfasfdsfsdafsd
+  year: 2018
+-
+  title: A colorful snake 🐍 game by JavaScript only!
+  url: https://baidu.com
+  img: "https://raw.githubusercontent.com/erlzhang/erldesign/master/img/persephone.png?raw=true"
+  keywords:
+    - JavaScript
+  description: |
+    dafldjflas
+    dfasfasdfdsa
+    dfasfdsfsdafsd
+  year: 2018
+-
+  title: A colorful snake 🐍 game by JavaScript only!
+  url: https://baidu.com
+  img: "https://raw.githubusercontent.com/erlzhang/erldesign/master/img/dysis.png"
+  keywords:
+    - JavaScript
+  description: |
+    dafldjflas
+    dfasfasdfdsa
+    dfasfdsfsdafsd
+  year: 2018
+-
+  title: A colorful snake 🐍 game by JavaScript only!
+  url: https://baidu.com
+  img: "https://raw.githubusercontent.com/erlzhang/erldesign/master/img/sky.png"
+  keywords:
+    - JavaScript
+  description: |
+    dafldjflas
+    dfasfasdfdsa
+    dfasfdsfsdafsd
+  year: 2018
+-
+  title: A ♟️ game by React
+  url: https://baidu.com
+  img: "https://raw.githubusercontent.com/erlzhang/jekyll-theme-arktos/master/screenshot.png"
   keywords:
     - JavaScript
     - React
