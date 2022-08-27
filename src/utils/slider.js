@@ -1,4 +1,4 @@
-import Slide from './Slide.js'
+import Slide from './slide.js'
 import imagesLoaded from 'imagesloaded'
 
 export default class Slider {
