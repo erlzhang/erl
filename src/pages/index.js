@@ -11,7 +11,7 @@ export default function({ data }) {
   return (
     <Layout>
       <Header site={site}></Header>
-      <Slides slides={slides}></Slides>
+      <Slides site={site} slides={slides}></Slides>
     </Layout>
   )
 }
@@ -31,6 +31,8 @@ export const query = graphql`
       siteMetadata {
         description
         title
+        imgPrefix
+        logo
       }
     }
     allBook(sort: {fields: fields___end, order: DESC}, limit: 4) {

@@ -116,6 +116,8 @@ export const query = graphql`
         title
         email
         github
+        imgPrefix
+        logo
       }
     }
     allBook(sort: {fields: fields___end, order: DESC}) {

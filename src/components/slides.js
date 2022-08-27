@@ -3,22 +3,22 @@ import { getDate } from "../utils/book";
 import Slider from "../utils/slider";
 import { Loading } from "./icons";
 
-function SlideImage({ slide }) {
+function SlideImage({ site, slide }) {
   return (
     <div className="slide__img">
       <a href={`/${slide.slug}`} className="slide__link" title={slide.fields.title}></a>
       <div className="slide__img_placehold"></div>
-      <img src={'https://erl.im' + slide.fields.img} className="slide__img_entity" alt={slide.fields.title} />
+      <img src={site.imgPrefix + slide.fields.img} className="slide__img_entity" alt={slide.fields.title} />
     </div>
   )
 }
 
-function Slide({ slide, side }) {
+function Slide({ slide, side, site }) {
   return (
     <div className="slide__section">
       {
         side === 'right' &&
-        <SlideImage slide={slide}></SlideImage>
+        <SlideImage site={site} slide={slide}></SlideImage>
       }
       <div className={`slide__text slide__text_${side}`}>
         <a href={`/${slide.slug}`} className="slide__link" title={slide.fields.title}></a>
@@ -35,16 +35,16 @@ function Slide({ slide, side }) {
       </div>
       {
         side === 'left' &&
-        <SlideImage slide={slide}></SlideImage>
+        <SlideImage site={site} slide={slide}></SlideImage>
       }
     </div>
   )
 }
 
-export default function({ slides }) {
+export default function({ slides, site }) {
   const items = slides.map((slide, index) => {
     return (
-      <Slide slide={slide} key={slide.slug} side={index % 2 === 0 ? 'left' : 'right'}></Slide>
+      <Slide site={site} slide={slide} key={slide.slug} side={index % 2 === 0 ? 'left' : 'right'}></Slide>
     )
   });
 

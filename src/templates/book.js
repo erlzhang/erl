@@ -24,7 +24,7 @@ export default function({ data }) {
         <Header site={site}></Header>
         <div
           className="book__cover"
-          style={getImgCover(book.fields.img)}
+          style={getImgCover(site.imgPrefix + book.fields.img)}
         >
         </div>
         <div className="book__content">
@@ -68,6 +68,8 @@ export const query = graphql`
       siteMetadata {
         description
         title
+        imgPrefix
+        logo
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {

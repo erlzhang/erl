@@ -3,7 +3,9 @@ module.exports = {
     title: "叶夕青兮",
     description: "生活便是一本书，一壶茶，一个阳光明媚的下午！",
     email: "zhangshiyu1992@hotmail.com",
-    github: "erlzhang"
+    github: "erlzhang",
+    imgPrefix: "https://erlim.oss-cn-hongkong.aliyuncs.com",
+    logo: "/img/logo.svg"
   },
   plugins: [
     `gatsby-plugin-catch-links`,

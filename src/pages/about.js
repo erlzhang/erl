@@ -54,6 +54,8 @@ query {
       title
       email
       github
+      imgPrefix
+      logo
     }
   }
   markdownRemark(fields: {slug: {eq: "/about/"}}) {

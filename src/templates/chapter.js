@@ -49,7 +49,7 @@ export default function Chapter({ data }) {
               <div className="chapter__inner">
                 <article
                   className="chapter__content content"
-                  dangerouslySetInnerHTML={{ __html: post.html }}
+                  dangerouslySetInnerHTML={{ __html: post.html.replaceAll('/img/', site.imgPrefix+'/img/') }}
                 />
               </div>
               <Footer site={site}></Footer>
@@ -90,6 +90,8 @@ export const query = graphql`
       siteMetadata {
         description
         title
+        imgPrefix
+        logo
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
