@@ -1,7 +1,8 @@
 import React from "react";
 import { graphql } from "gatsby";
 
-export default function({ site }) {
+export default function({ data }) {
+  const site = data.site.siteMetadata
   return (
     <div class="error-container">
       <h1 class="error-title">404</h1>
@@ -22,3 +23,12 @@ export const query = graphql`
   }
   
 `
+
+export const Head = ({data}) => {
+  const site = data.site.siteMetadata;
+  return (
+    <>
+      <title>404 | { site.title }</title>
+    </>
+  )
+}
