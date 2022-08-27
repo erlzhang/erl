@@ -5,7 +5,7 @@
 }
 .book__cover {
   height: 100vh;
-  width: 40%;
+  width: 35%;
   overflow: hidden;
   position: fixed;
   left: 0;
@@ -43,9 +43,9 @@
   line-height: 2rem;
 }
 .book__meta {
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 -1rem 0;
   color: var(--gray);
-  font-size: 0.875rem;
+  font-size: 14px;
 }
 .book__icon {
   display: inline-block;

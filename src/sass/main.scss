@@ -14,8 +14,10 @@
 // 404
 @import "persephone/error";
 
-//blog
-@import "persephone/blog";
-@import "persephone/list";
+//book
+@import "persephone/summary";
+@import "persephone/book";
+@import "persephone/chapter";
+@import "persephone/archive";
+@import "persephone/slides";
 @import "persephone/post";
-@import "persephone/comments";

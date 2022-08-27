@@ -1,27 +1,40 @@
 module.exports = {
   siteMetadata: {
-    title: "Erl",
-    description: "A web developer and minimalism."
+    title: "叶夕青兮",
+    description: "生活便是一本书，一壶茶，一个阳光明媚的下午！",
+    email: "zhangshiyu1992@hotmail.com",
+    github: "erlzhang"
   },
   plugins: [
+    `gatsby-plugin-catch-links`,
     "gatsby-plugin-sass",
+    require.resolve(`./plugins/source-books`),
     "gatsby-transformer-remark",
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "posts",
-        path: "./src/posts/",
+        name: "books",
+        path: "./src/_books/",
       },
-      __key: "posts",
+      __key: "books",
     },
-    `gatsby-transformer-yaml`,
+    "gatsby-transformer-remark",
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "data",
-        path: "./src/data/",
+        name: "pages",
+        path: "./src/_pages/",
       },
-      __key: "data",
+      __key: "pages",
     },
+    // `gatsby-transformer-yaml`,
+    // {
+    //   resolve: "gatsby-source-filesystem",
+    //   options: {
+    //     name: "data",
+    //     path: "./src/data/",
+    //   },
+    //   __key: "data",
+    // },
   ],
 };

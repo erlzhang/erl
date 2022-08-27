@@ -23,6 +23,7 @@
   left: 0;
   top: 0;
   z-index: 1;
+  transition: all 0.35s ease-in-out;
   @include flex();
   @include flex-middle();
   @include flex-column();
@@ -52,11 +53,11 @@
 }
 .archive__list {
   width: 100%;
-  margin: 1.5rem 0 2.5rem;
+  margin: 3.5rem 0 2.5rem;
   flex: 1;
   @include flex();
   @include flex-column();
-  justify-content: center;
+  justify-content: start;
 }
 .archive__item {
   list-style: none;
@@ -65,9 +66,16 @@
   border-bottom: 1px solid transparent;
   width: 100%;
   overflow: hidden;
+  transition: all 0.25s ease-in-out;
   &:hover {
     border-color: var(--lighter);
   }
+  &.fade a, &.fade .archive__time {
+    color: var(--light-gray);
+  }
+}
+.archive__item a, .archive__time {
+  transition: all 0.25s ease-out;
 }
 .archive__link {
   color: var(--dark);
@@ -83,6 +91,51 @@
   font-size: 0.9rem;
   color: var(--gray);
   flex-shrink: 0;
+}
+.archive__title {
+  flex: 1;
+}
+.archive__meta {
+  font-size: 0.75rem;
+  color: var(--light-gray);
+  // opacity: 0;
+  transition: all 0.25s ease-in-out;
+  display: inline-block;
+  min-width: 65px;
+  text-align: right;
+}
+.archive__item:hover .archive__meta,
+.archive__item:hover .archive__tag {
+  opacity: 1;
+}
+.archive__tags {
+  transition: all 0.25s ease-in-out;
+  padding: 0.75rem 5.35rem;
+  margin-bottom: 1.5rem;
+}
+.archive__tag {
+  font-size: 12px;
+  display: inline-block;
+  padding: 6px 7px;
+  background-color: var(--lighter);
+  border-radius: 2px;
+  margin: 0 3px;
+  line-height: 1;
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+}
+.archive__tags .archive__tag {
+  opacity: 1;
+  cursor: pointer;
+  background-color: transparent;
+}
+.archive__tags .archive__tag.active {
+  background-color: var(--lighter);
+}
+.archive__bottom {
+  text-align: right;
+  margin-top: 20px;
+  padding-right: 5.35rem;
 }
 .icon__list {
   text-align: center;

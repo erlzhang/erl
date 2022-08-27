@@ -7,7 +7,7 @@
   overflow-y: auto;
   width: 300px;
   color: var(--grayer);
-  background: var(--white);
+  // background: var(--white);
   border-right: 1px solid rgba(0, 0, 0, 0.07);
   -webkit-transition: left 250ms ease;
   -moz-transition: left 250ms ease;
@@ -25,6 +25,10 @@
     border-radius: 8px;
     background-color: var(--lightest);
   }
+}
+.dark-mode .book-summary {
+  color: var(--light-gray);
+  border-color: var(--grayer);
 }
 .book-summary ul.summary {
   list-style: none;
@@ -51,6 +55,9 @@
   overflow: hidden;
   background: rgba(0, 0, 0, 0.07);
 }
+.dark-mode .book-summary ul.summary li.divider {
+  background-color: var(--grayer);
+}
 .book-summary ul.summary li i.fa-check {
   display: none;
   position: absolute;
@@ -60,7 +67,7 @@
   color: #33cc33;
 }
 .book-summary ul.summary li.done > a {
-  color: var(--grayer);
+  color: inherit;
   font-weight: normal;
 }
 .book-summary ul.summary li.done > a i {
@@ -71,7 +78,7 @@
   display: block;
   padding: 10px 15px;
   border-bottom: none;
-  color: var(--grayer);
+  color: inherit;
   background: transparent;
   text-overflow: ellipsis;
   overflow: hidden;

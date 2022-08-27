@@ -51,6 +51,12 @@
 .sidebar-right .logo:hover h1 {
   transform: none;
 }
+.sidebar-top .sidebar__toggler {
+  right: 3rem;
+  top: 3rem;
+  left: auto;
+  bottom: auto;
+}
 .sidebar__toggler span {
   display: inline-block;
   position: absolute;

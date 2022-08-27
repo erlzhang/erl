@@ -1,11 +1,36 @@
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const path = require(`path`)
+const _ = require('lodash')
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
+function findFileNode({ node, getNode }) {
+  // Find the file node.
+  let fileNode = node
+
+  let whileCount = 0
+  while (
+    fileNode.internal.type !== `File` &&
+    fileNode.parent &&
+    getNode(fileNode.parent) !== undefined &&
+    whileCount < 101
+  ) {
+    fileNode = getNode(fileNode.parent)
+
+    whileCount += 1
+    if (whileCount > 100) {
+      console.log(
+        `It looks like you have a node that's set its parent as itself`,
+        fileNode
+      )
+    }
+  }
+
+  return fileNode
+}
+
+exports.onCreateNode = ({ node, getNode, actions, getNodesByType }) => {
   const { createNodeField } = actions
   // Ensures we are processing only markdown files
   if (node.internal.type === "MarkdownRemark") {
-    // Use `createFilePath` to turn markdown files in our `data/faqs` directory into `/faqs/slug`
     const relativeFilePath = createFilePath({
       node,
       getNode
@@ -15,8 +40,53 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       node,
       name: "slug",
-      value: `/blog${relativeFilePath}`,
+      value: `${relativeFilePath}`,
     })
+
+    createNodeField({
+      node,
+      name: "wordCount",
+      value: _.words(node.rawMarkdownBody, /[\s\p{sc=Han}]/gu).length
+    })
+
+    // Use `createFilePath` to turn markdown files in our `data/faqs` directory into `/faqs/slug`
+    const file = findFileNode({node, getNode});
+
+    const bookPath = file.relativeDirectory;
+
+    const books = getNodesByType(`Book`)
+    const book = books.find(book => book.slug === bookPath);
+    if (!book) {
+      return;
+    }
+
+    createNodeField({
+      node,
+      name: "book",
+      value: book.slug
+    })
+
+    // parse Summary
+    if (file.name === 'SUMMARY') {
+      createNodeField({
+        node,
+        name: 'summary',
+        value: true
+      })
+    } else if (file.name === 'index') {
+      for (let key in node.frontmatter) {
+        createNodeField({
+          node: book,
+          name: key,
+          value: node.frontmatter[key]
+        })
+      }
+      createNodeField({
+        node,
+        name: 'index',
+        value: true
+      })
+    }
   }
 }
 
@@ -28,7 +98,10 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             fields {
-              slug
+              slug,
+              book,
+              index,
+              summary
             }
           }
         }
@@ -36,13 +109,28 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    if (node.fields.summary) {
+      return;
+    }
+
+    if (node.fields.index) {
+      createPage({
+        path: node.fields.slug,
+        component: path.resolve(`./src/templates/book.js`),
+        context: {
+          slug: node.fields.slug,
+          book: node.fields.book
+        },
+      })
+      return;
+    }
+
     createPage({
       path: node.fields.slug,
-      component: path.resolve(`./src/templates/post.js`),
+      component: path.resolve(`./src/templates/chapter.js`),
       context: {
-        // Data passed to context is available
-        // in page queries as GraphQL variables.
         slug: node.fields.slug,
+        book: node.fields.book
       },
     })
   })
