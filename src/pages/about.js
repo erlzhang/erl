@@ -41,7 +41,7 @@ export const Head = ({data}) => {
   const post = data.markdownRemark;
   return (
     <>
-      <title>{ post.frontmatter.title } | { site.title }</title>
+      <title>关于 | { site.title }</title>
     </>
   )
 }

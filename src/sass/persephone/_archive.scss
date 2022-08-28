@@ -179,7 +179,9 @@
   }
 }
 @media screen and (max-width: 600px) {
-  .archive__item {
+  .archive__item,
+  .archive__tags,
+  .archive__bottom {
     padding: 0.75rem 2rem;
   }
   .archive__time {

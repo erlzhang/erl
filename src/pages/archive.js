@@ -73,7 +73,7 @@ export default function({ data }) {
 
   return (
     <Layout>
-      <Header site={site} isArchive={true}></Header>
+      <Header site={site}></Header>
       <main className="archive">
         <div
           className="archive__header"

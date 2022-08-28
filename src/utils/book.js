@@ -3,7 +3,7 @@ export function getDate(book) {
   const { start, end } = book.fields;
   let str = "";
   if (start !== end) {
-    str += start + " - ";
+    str += start + "-";
   }
   str += end;
   return str;

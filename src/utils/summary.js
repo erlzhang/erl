@@ -41,9 +41,6 @@ function parseLi(li, book, current) {
 }
 
 export function parseSummary(summary, book, current) {
-  // let current = post.fields.slug;
-
-  console.warn('in htmlAst', summary.htmlAst);
 
   let result = [{
     title: book.fields.title,
