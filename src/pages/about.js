@@ -1,30 +1,41 @@
-import React from "react";
-import Layout from "../components/layout";
+import React, { useEffect } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { graphql } from "gatsby";
 import Social from "../components/social";
+import hoverShowImages from "../utils/hoverShowImages";
 
 export default function({data}) {
   const post = data.markdownRemark;
   const site = data.site.siteMetadata;
 
+  let inited = false;
+
+  useEffect(() => {
+    if (inited) {
+      return;
+    }
+
+    hoverShowImages();
+    inited = true;
+  })
+
   return (
-    <Layout>
+    <>
       <div className="page sidebar-top">
         <Header site={site}></Header>
-        <main class="post__wrapper">
-          <article class="post">
-            <header class="post__header">
-              <h1 class="post__title page__title">{ post.frontmatter.title }</h1>
+        <main className="post__wrapper">
+          <article className="post">
+            <header className="post__header">
+              <h1 className="post__title page__title">{ post.frontmatter.title }</h1>
             </header>
             <div
-              class="post__content content"
+              className="post__content content"
               dangerouslySetInnerHTML={{ __html: post.html }}
             >
             </div>
           </article>
-          <aside class="post__contact">
+          <aside className="post__contact">
             <h4>{ site.title}</h4>
             <p>{ site.description }</p>
             <Social site={site}></Social>
@@ -32,7 +43,7 @@ export default function({data}) {
         </main>
         <Footer site={site}></Footer>
       </div>
-    </Layout>
+    </>
   )
 }
 

@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { getDate } from "../utils/book";
 import Slider from "../utils/slider";
 import { Loading } from "./icons";
+import { Link } from "gatsby";
 
 function SlideImage({ site, slide }) {
   return (
     <div className="slide__img">
-      <a href={`/${slide.slug}`} className="slide__link" title={slide.fields.title}></a>
+      <Link to={`/${slide.slug}`} className="slide__link" title={slide.fields.title}></Link>
       <div className="slide__img_placehold"></div>
       <img src={site.imgPrefix + slide.fields.img} className="slide__img_entity" alt={slide.fields.title} />
     </div>
@@ -21,7 +22,7 @@ function Slide({ slide, side, site }) {
         <SlideImage site={site} slide={slide}></SlideImage>
       }
       <div className={`slide__text slide__text_${side}`}>
-        <a href={`/${slide.slug}`} className="slide__link" title={slide.fields.title}></a>
+        <Link to={`/${slide.slug}`} className="slide__link" title={slide.fields.title}></Link>
         <div className="slide__title">
           <div className="slide__title_inner">
             <h2 className="slide__title_text">{ slide.fields.title }</h2>

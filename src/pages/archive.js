@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Layout from "../components/layout";
 import Footer from "../components/footer";
 import Header from "../components/header";
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { getAllCategories, getDate, getWordCountOfBooks } from "../utils/book";
 import Social from "../components/social";
 
@@ -10,7 +9,7 @@ function SiteInfo({ site }) {
   return (
     <>
       <h1>
-        <a href="/about">{ site.title }</a>
+        <Link to="/about">{ site.title }</Link>
       </h1>
       <div className="archive__header_intro">
         { site.description }
@@ -40,12 +39,12 @@ export default function({ data }) {
         key={book.slug}
         onMouseEnter={() => setHovered(book.slug)}
       >
-        <a href={`/${book.slug}`} className="archive__link clearfix">
+        <Link to={`/${book.slug}`} className="archive__link clearfix">
           <span className="archive__time">{ getDate(book) }</span>
           <span className="archive__title">{ book.fields.title }</span>
           <span className="archive__tag">{ book.fields.category }</span>
           <span className="archive__meta">{ wordCounts[book.slug] }字</span>
-        </a>
+        </Link>
       </li>
     )
   });
@@ -72,7 +71,7 @@ export default function({ data }) {
   }
 
   return (
-    <Layout>
+    <>
       <Header site={site}></Header>
       <main className="archive">
         <div
@@ -95,7 +94,7 @@ export default function({ data }) {
         </div>
         <Footer site={site}></Footer>
       </main>
-    </Layout>
+    </>
   )
 }
 

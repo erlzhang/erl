@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "gatsby";
 
 export default function({ site }) {
   return (
-    <footer class="site-footer">
-      <a href="/about">{ site.title }</a> © { new Date().getFullYear() }
+    <footer className="site-footer">
+      <Link to="/about">{ site.title }</Link> © { new Date().getFullYear() }
     </footer>
   )
 }

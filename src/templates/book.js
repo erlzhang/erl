@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import {
   parseSummary,
   getPrevAndNext
@@ -34,14 +34,14 @@ export default function({ data }) {
             </div>
             {
               next &&
-              <a href={next.href} className="book__more">
+              <Link to={next.href} className="book__more">
                 <div className="book__icon">
                   <svg width="80" height="80">
                     <circle className="circle-progress" r="36" cy="40" cx="40"  stroke-linejoin="round" stroke-linecap="round" />
                   </svg>
                   <span className="book__icon_arrow"></span>
                 </div>
-              </a>
+              </Link>
             }
             
             </div>

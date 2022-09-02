@@ -8,8 +8,8 @@ module.exports = {
     logo: "/img/logo.svg"
   },
   plugins: [
-    `gatsby-plugin-catch-links`,
     "gatsby-plugin-sass",
+    `gatsby-plugin-layout`,
     require.resolve(`./plugins/source-books`),
     "gatsby-transformer-remark",
     {

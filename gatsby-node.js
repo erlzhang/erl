@@ -26,7 +26,6 @@ function findFileNode({ node, getNode }) {
 
   return fileNode
 }
-
 exports.onCreateNode = ({ node, getNode, actions, getNodesByType }) => {
   const { createNodeField } = actions
   // Ensures we are processing only markdown files
@@ -109,7 +108,8 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    if (node.fields.summary) {
+    if (!node.fields) return;
+    if (node.fields.summary || !node.fields.book) {
       return;
     }
 
@@ -130,7 +130,8 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve(`./src/templates/chapter.js`),
       context: {
         slug: node.fields.slug,
-        book: node.fields.book
+        book: node.fields.book,
+        layout: 'chapter'
       },
     })
   })

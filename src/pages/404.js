@@ -1,13 +1,13 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 
 export default function({ data }) {
   const site = data.site.siteMetadata
   return (
-    <div class="error-container">
-      <h1 class="error-title">404</h1>
-      <p class="error-hint"><strong>Page not found :(</strong></p>
-      <a href="/" class="error-link">Back to { site.title }</a>
+    <div className="error-container">
+      <h1 className="error-title">404</h1>
+      <p className="error-hint"><strong>Page not found :(</strong></p>
+      <Link to="/" className="error-link">Back to { site.title }</Link>
     </div>
   )
 }

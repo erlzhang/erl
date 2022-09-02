@@ -151,6 +151,38 @@
 .navigation.navigation-prev {
   left: 0;
 }
+.navi-title {
+  position: absolute;
+  font-size: 14px;
+  width: 15vw;
+  text-align: left;
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.35s, opacity 0.35s;
+	transition: transform 0.35s, opacity 0.35s;
+}
+.navigation.navigation-prev .navi-title {
+	left: 60px;
+	-webkit-transform: translateX(-10px);
+	transform: translateX(-10px);
+}
+
+.navigation.navigation-next .navi-title {
+	right: 60px;
+	text-align: right;
+	-webkit-transform: translateX(10px);
+	transform: translateX(10px);
+}
+.navigation:hover {
+  .navi-title {
+    // transform: translateY(-50%) translateX(-50%);;
+    opacity: 1;
+    // left: 60px;
+    opacity: 1;
+    -webkit-transform: translateY(0) translateX(0);
+    transform: translateY(0) translateX(0);
+  }
+}
+
 @media (max-width: 1240px) {
   .navigation {
     position: static;
