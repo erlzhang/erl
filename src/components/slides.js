@@ -45,7 +45,7 @@ function Slide({ slide, side, site }) {
 export default function({ slides, site }) {
   const items = slides.map((slide, index) => {
     return (
-      <Slide site={site} slide={slide} key={slide.slug} side={index % 2 === 0 ? 'left' : 'right'}></Slide>
+      <Slide site={site} slide={slide} key={slide.slug} side={index % 2 === 1 ? 'left' : 'right'}></Slide>
     )
   });
 
