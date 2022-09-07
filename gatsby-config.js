@@ -29,6 +29,13 @@ module.exports = {
       },
       __key: "pages",
     },
+    {
+      resolve: `gatsby-plugin-baidu-tongji`,
+      options: {
+        siteid: "3176e6e675ed7773f831e38c7a57880f",
+        head: true,
+      },
+    },
     // `gatsby-transformer-yaml`,
     // {
     //   resolve: "gatsby-source-filesystem",
