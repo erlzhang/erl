@@ -1,14 +1,11 @@
 import React from "react";
 import Container from "./container";
 import Summary from "../components/summary";
+import Navigation from "../components/navigation";
 import {
   parseSummary,
   getPrevAndNext
 } from "../utils/summary";
-import {
-  Left, Right, Ellipsis
-} from "../components/icons";
-import { Link } from "gatsby"
 import ContextConsumer, { ContextProviderComponent }  from "./Context"
 
 export default function({ data, children, pageContext }) {
@@ -19,33 +16,12 @@ export default function({ data, children, pageContext }) {
     return ( <Container>
         <ContextProviderComponent>
           <ContextConsumer>
-            {({ data }) => (
+            {({ data, set }) => (
               <div className={`book__wrapper sidebar-right${data.showSummary?' with-summary': ''}`} id="bookMain">
-                <Summary summary={summary}></Summary>
+                <Summary summary={summary} handleClose={() => set({showSummary: false})}></Summary>
                 <div className="book__body">
                   { children }
-                  {
-                    prev &&
-                    <Link
-                      to={prev.href}
-                      className="navigation navigation-prev"
-                      aria-label={`Previous page: ${ prev.title }`}
-                    >
-                      <Left></Left>
-                      <span className="navi-title">{ prev.title }</span>
-                    </Link>
-                  }
-                  {
-                    next &&
-                    <Link
-                      to={next.href}
-                      className="navigation navigation-next"
-                      aria-label={`Next page: ${ next.title }`}
-                    >
-                      <Right></Right>
-                      <span className="navi-title">{ next.title }</span>
-                    </Link>
-                  }
+                  <Navigation prev={prev} next={next}></Navigation>
                 </div>
               </div>
             )}

@@ -70,6 +70,7 @@ export const query = graphql`
         title
         imgPrefix
         logo
+        email
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {

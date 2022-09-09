@@ -81,26 +81,17 @@
 .book__wrapper.with-summary .book__body {
   left: 300px;
 }
-@media (max-width: 1240px) {
-  .book__body {
-    @include transition(transform 250ms ease);
-    padding-bottom: 20px;
-  }
-  .book__body .body__inner {
-    position: static;
-    min-height: calc(100% - 50px);
-  }
-}
 @media (max-width: 600px) {
   .book__wrapper.with-summary {
     overflow: hidden;
   }
-  .book__wrapper.with-summary .book__body {
-    left: calc(100% - 60px);
-    right: calc(60px - 100%);
-  }
   .book__wrapper.with-summary .sidebar__toggler {
     display: none;
+  }
+}
+@media (max-width: 1240px) {
+  .book__wrapper.with-summary .book__body {
+    left: 0;
   }
 }
 .chapter__wrapper {
@@ -174,27 +165,57 @@
 }
 .navigation:hover {
   .navi-title {
-    // transform: translateY(-50%) translateX(-50%);;
-    opacity: 1;
-    // left: 60px;
     opacity: 1;
     -webkit-transform: translateY(0) translateX(0);
     transform: translateY(0) translateX(0);
   }
 }
+.mobile-navigation {
+  display: none;;
+}
 
 @media (max-width: 1240px) {
-  .navigation {
-    position: static;
-    top: auto;
-    max-width: 50%;
-    width: 50%;
-    display: inline-block;
-    float: left;
+  .navigation.navigation-next,
+  .navigation.navigation-prev {
+    display: none;
   }
-  .navigation.navigation-unique {
-    max-width: 100%;
-    width: 100%;
+  .mobile-navigation {
+    display: block;
+    height: 40px;
+    margin-bottom: 30px;
+    display: flex;
+    .navigation {
+      position: static;
+      top: auto;
+      max-width: 50%;
+      width: 50%;
+      display: flex;
+      color: var(--grayer);
+    }
+    .navigation.navigation.navigation-prev {
+      align-items: flex-start;
+    }
+    .navigation.navigation.navigation-next {
+      align-items: flex-end;
+    }
+    .navigation.navigation-unique {
+      max-width: 100%;
+      width: 100%;
+    }
+    .navi-title {
+      opacity: 1;
+      width: auto;
+      flex: 1;
+      transform: none;
+    }
+    .navigation:hover {
+      .navi-title {
+        transform: none;
+      }
+    }
+  }
+  .summary__toggler.active {
+    transform: none;
   }
 }
 
@@ -220,4 +241,7 @@
     right: auto;
   }
 
+}
+.chapter__content {
+  margin-bottom: 4.5rem;
 }

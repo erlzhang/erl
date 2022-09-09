@@ -26,6 +26,9 @@
     background-color: var(--lightest);
   }
 }
+.close-summary {
+  display: none;
+}
 .dark-mode .book-summary {
   color: var(--light-gray);
   border-color: var(--grayer);
@@ -99,10 +102,28 @@
 .book-summary ul.summary li ul {
   padding-left: 20px;
 }
-@media (max-width: 600px) {
-  .book-summary {
-    width: calc(100% - 60px);
-    bottom: 0;
-    left: -100%;
+@media (max-width: 1240px) {
+  // .book-summary {
+  //   width: calc(100% - 60px);
+  //   bottom: 0;
+  //   left: -100%;
+  // }
+  .book__wrapper.with-summary .book-summary {
+    width: 100%;
+    position: fixed;
+    background-color: white;
+    height: 100%;
+    z-index: 55555;
+  }
+  .close-summary {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 111;
+    width: 50px;
+    text-align: center;
+    height: 40px;
+    padding-top: 10px;
   }
 }

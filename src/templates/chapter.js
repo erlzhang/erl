@@ -6,10 +6,18 @@ import { graphql } from "gatsby"
 import Header from "../components/header";
 import Footer from "../components/footer";
 import ContextConsumer from "../layouts/Context"
+import Subscribe from "../components/subscribe";
+import Navigation from "../components/navigation";
+import {
+  parseSummary,
+  getPrevAndNext
+} from "../utils/summary";
 
 export default function Chapter({ data }) {
   const post = data.markdownRemark;
   const site = data.site.siteMetadata;
+  const summary = parseSummary(data.summary, data.book, post.fields.slug);
+  const { prev, next } = getPrevAndNext(post.fields.slug, summary);
 
   const title = post.headings[0].value;
 
@@ -42,6 +50,10 @@ export default function Chapter({ data }) {
               className="chapter__content content"
               dangerouslySetInnerHTML={{ __html: post.html.replaceAll('/img/', site.imgPrefix+'/img/') }}
             />
+            <div className="mobile-navigation">
+              <Navigation prev={prev} next={next}></Navigation>
+            </div>
+            <Subscribe site={site}/>
           </div>
           <Footer site={site}></Footer>
         </main>
@@ -69,6 +81,8 @@ export const query = graphql`
         title
         imgPrefix
         logo
+        email
+        github
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {

@@ -20,7 +20,20 @@ module.exports = {
       },
       __key: "books",
     },
-    "gatsby-transformer-remark",
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+        {
+          resolve: "gatsby-remark-external-links",
+          options: {
+            target: "_blank",
+            rel: "nofollow"
+          }
+        }
+        ]
+      }
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -36,14 +49,12 @@ module.exports = {
         head: true,
       },
     },
-    // `gatsby-transformer-yaml`,
-    // {
-    //   resolve: "gatsby-source-filesystem",
-    //   options: {
-    //     name: "data",
-    //     path: "./src/data/",
-    //   },
-    //   __key: "data",
-    // },
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+          endpoint: 'https://erl.us11.list-manage.com/subscribe/post?u=0e069016bec27f9f7a8734fe2&amp;id=5f31c277cd&amp;f_id=00dd8ce0f0', // string; add your MC list endpoint here; see instructions below
+          timeout: 3500, // number; the amount of time, in milliseconds, that you want to allow mailchimp to respond to your request before timing out. defaults to 3500
+      },
+    },
   ],
 };

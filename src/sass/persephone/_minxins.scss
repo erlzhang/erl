@@ -5,7 +5,7 @@
 }
 
 @mixin flex() {
-  display: flex!important;
+  display: flex;
   display: -webkit-box;
   display: -ms-flexbox;
 }

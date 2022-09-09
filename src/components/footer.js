@@ -4,7 +4,8 @@ import { Link } from "gatsby";
 export default function({ site }) {
   return (
     <footer className="site-footer">
-      <Link to="/about">{ site.title }</Link> © { new Date().getFullYear() }
+      <Link to="/">{ site.title }</Link> 
+      © { new Date().getFullYear() }
     </footer>
   )
 }

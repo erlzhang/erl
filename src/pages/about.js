@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { graphql } from "gatsby";
-import Social from "../components/social";
 import hoverShowImages from "../utils/hoverShowImages";
+import Contact from "../components/contact";
 
 export default function({data}) {
   const post = data.markdownRemark;
@@ -35,11 +35,7 @@ export default function({data}) {
             >
             </div>
           </article>
-          <aside className="post__contact">
-            <h4>{ site.title}</h4>
-            <p>{ site.description }</p>
-            <Social site={site}></Social>
-          </aside>
+          <Contact site={site}/>
         </main>
         <Footer site={site}></Footer>
       </div>

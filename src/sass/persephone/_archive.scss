@@ -188,6 +188,10 @@
     width: 100px;
     flex-basis: 100px;
   }
+  .archive__item .archive__meta,
+  .archive__item .archive__tag {
+    display: none;
+  }
 }
 .page__content {
 	max-width: 800px;
