@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "gatsby";
 import addToMailchimp from 'gatsby-plugin-mailchimp'
 
-export default function({site}) {
+export default function({site, book}) {
   const [email, setEmail] = useState('');
   const [state, setState] = useState('');
 
@@ -36,7 +36,12 @@ export default function({site}) {
       <p style={{
         marginBottom: 30
       }}>🍀 By <Link to="/about">叶夕青兮</Link> 🍀</p>
-      <p>如果有什么想对她吐槽的，💌 <a href={`mailto:${site.email}`}>写封邮件给她</a> 吧！</p>
+      <p>
+        如果有什么想对她吐槽的，💌
+        <a href={`mailto:${site.email}?subject=读《${book}》有感`}>
+          写封邮件给她
+        </a>
+        吧！</p>
       <p>如果对她写的东西感兴趣的话，可以把邮箱地址填在下面 👇</p>
       <p>然后你会每年收到来自她的问候 😊（每年仅一次哦~）</p>
       <form

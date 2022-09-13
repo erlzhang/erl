@@ -53,7 +53,7 @@ export default function Chapter({ data }) {
             <div className="mobile-navigation">
               <Navigation prev={prev} next={next}></Navigation>
             </div>
-            <Subscribe site={site}/>
+            <Subscribe book={data.book.fields.title} site={site}/>
           </div>
           <Footer site={site}></Footer>
         </main>
