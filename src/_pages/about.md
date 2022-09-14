@@ -9,7 +9,7 @@
 
 这个空间目前是用[Gatsby](https://gatsbyjs.com/)搭建的，坐落在[Netlify](https://www.netlify.com/)的一角，主题移植于我的Jekyll主题[Persephone](https://github.com/erlzhang/jekyll-theme-persephone)。
 
-她热爱写作，从2013年开始写博客（如今已是不写了的）。这花园里栽种着她的小说以及随笔。
+她热爱写作，从2013年开始写博客，这花园里栽种着她的小说以及随笔。
 
 她的写作方式是纸笔 ✍️，主力工具是[Midori MD A5 方格笔记本](https://erlgallery.oss-cn-beijing.aliyuncs.com/DSC09969.JPG?x-oss-process=image/resize,l_400) 📔（搭配Midori山羊皮书衣）+ [写乐四季织明月mf尖14k钢笔](https://erlgallery.oss-cn-beijing.aliyuncs.com/DSC09990.JPG?x-oss-process=image/resize,l_400) ✒️（搭配百乐色彩雫深绿彩墨）。她的字很难看，正在尽力练字中。
 
