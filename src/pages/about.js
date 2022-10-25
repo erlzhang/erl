@@ -4,8 +4,6 @@ import Footer from "../components/footer";
 import { graphql } from "gatsby";
 import hoverShowImages from "../utils/hoverShowImages";
 import Contact from "../components/contact";
-import { init } from '@waline/client';
-import '@waline/client/dist/waline.css';
 
 export default function({data}) {
   const post = data.markdownRemark;
@@ -20,20 +18,6 @@ export default function({data}) {
 
     hoverShowImages();
     inited = true;
-
-    const locale = {
-      placeholder: '有什么想说的呢~',
-      sofa: '这里一片空白~',
-    };
-
-    init({
-      el: '#waline',
-      serverURL: 'https://waline-comment-two.vercel.app/',
-      locale,
-      login: 'disable',
-      path: '/about'
-      // ...
-    });
   });
 
   return (
@@ -54,8 +38,7 @@ export default function({data}) {
             >
             </div>
           </article>
-          {/* <Contact site={site}/> */}
-          <div id="waline"></div>
+          <Contact site={site}/>
         </main>
         <Footer site={site}></Footer>
       </div>
