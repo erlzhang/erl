@@ -36,6 +36,7 @@
     "sass": "^1.32.8"
   },
   "devDependencies": {
+    "@waline/client": "^2.13.0",
     "gatsby-source-notion": "^1.2.0"
   }
 }

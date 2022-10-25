@@ -193,6 +193,15 @@
     }
   }
 }
+.post__avatar {
+  text-align: center;
+  margin-bottom: 30px;
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+}
 .subscribe__form {
   max-width: 400px;
   width: 100%;
