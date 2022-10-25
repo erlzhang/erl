@@ -30,7 +30,8 @@ export default function({data}) {
       el: '#waline',
       serverURL: 'https://waline-comment-two.vercel.app/',
       locale,
-      login: 'disable'
+      login: 'disable',
+      path: '/about'
       // ...
     });
   });
