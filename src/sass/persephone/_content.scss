@@ -80,7 +80,7 @@
 }
 .content img {
   border: 0;
-  max-width: 100%;
+  max-width: 90%;
 	vertical-align: middle;
 }
 .content hr {
@@ -162,6 +162,9 @@
 .content pre > code:after {
   content: normal;
 }
+.content > p {
+  text-indent: 2em;
+}
 .content code {
   padding: 0.2em;
   margin: 0;
@@ -214,12 +217,21 @@
 .content ol ol {
   list-style-type: lower-roman;
 }
+.content h1 {
+  text-align: center;
+  margin-bottom: 2.75rem;
+}
 .content blockquote {
   margin: 0;
   margin-bottom: 0.85em;
-  padding: 0 15px;
+  padding: 0 30px;
   color: var(--gray);
-  border-left: 4px solid var(--light);
+  font-style: italic;
+  font-size: 0.9rem;
+  // border-left: 4px solid var(--light);
+}
+.content blockquote p {
+  text-indent: 2em;
 }
 .content blockquote:first-child {
   margin-top: 0;
@@ -258,6 +270,9 @@
   color: var(--gray);
   width: 100%;
   text-align: left;
+  hr {
+    display: none;
+  }
   &:before {
     @include pseudo();
     left: 0;
@@ -269,6 +284,9 @@
   ol {
     li {
       font-size: 0.875rem;
+      p {
+        display: inline;
+      }
     }
   }
 }
