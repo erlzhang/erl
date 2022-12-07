@@ -53,11 +53,12 @@
 }
 .archive__list {
   width: 100%;
-  margin: 3.5rem 0 2.5rem;
-  flex: 1;
-  @include flex();
-  @include flex-column();
-  justify-content: start;
+  padding: 3.5rem 0 2.5rem;
+  height: 100vh;
+//   flex: 1;
+//   @include flex();
+//   @include flex-column();
+//   justify-content: start;
 }
 .archive__item {
   list-style: none;
