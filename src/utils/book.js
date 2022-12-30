@@ -43,3 +43,16 @@ export function getAllCategories(books) {
   });
   return categories;
 }
+
+export function formatNum(num) {
+  let str = num + "";
+  let result = "";
+  let len = str.length;
+  for(let i = 1; i <= len; i++) {
+    result = str[len - i] + result;
+    if (i % 3 == 0 && i < len) {
+      result = "," + result;
+    }
+  }
+  return result;
+}

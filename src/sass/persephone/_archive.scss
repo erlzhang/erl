@@ -179,6 +179,9 @@
     padding: 5rem 0 0;
     position: static;
   }
+  .archive__list {
+    height: auto;
+  }
 }
 @media screen and (max-width: 600px) {
   .archive__item,

@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import { graphql, Link } from "gatsby"
-import { getAllCategories, getDate, getWordCountOfBooks } from "../utils/book";
+import {
+  getAllCategories,
+  getDate,
+  getWordCountOfBooks,
+  formatNum
+} from "../utils/book";
 import Social from "../components/social";
 
 function SiteInfo({ site }) {
@@ -43,7 +48,7 @@ export default function({ data }) {
           <span className="archive__time">{ getDate(book) }</span>
           <span className="archive__title">{ book.fields.title }</span>
           <span className="archive__tag">{ book.fields.category }</span>
-          <span className="archive__meta">{ wordCounts[book.slug] }字</span>
+          <span className="archive__meta">{ formatNum(wordCounts[book.slug]) }字</span>
         </Link>
       </li>
     )
@@ -88,7 +93,7 @@ export default function({ data }) {
               { items }
             </ul>
             <div className="archive__bottom">
-              <span className="archive__meta">总字数：{getWordCountSum()}</span>
+              <span className="archive__meta">总字数：{formatNum(getWordCountSum())}</span>
             </div>
           </div>
         </div>
