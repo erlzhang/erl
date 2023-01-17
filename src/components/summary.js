@@ -11,7 +11,7 @@ function ListItem({ item, onClick }) {
   return (
     // <li className="chapter {% if part.url == page.url -%}active{% endif -%}">
     <li className={`chapter${item.active ? ' active': ''}`}>
-      <Link onClick={onClick} to={item.href}>{ item.title }</Link>
+      <Link title={item.title} onClick={onClick} to={item.href}>{ item.title }</Link>
       {
         children && children.length &&
         <ul className="articles">
