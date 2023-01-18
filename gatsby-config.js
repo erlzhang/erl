@@ -9,7 +9,13 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-sass",
-    `gatsby-plugin-layout`,
+    // `gatsby-plugin-layout`,
+    {
+      resolve: "gatsby-plugin-transition-link",
+      options: {
+          layout: require.resolve(`./src/layouts/index.js`)
+        }
+    },
     require.resolve(`./plugins/source-books`),
     "gatsby-transformer-remark",
     {

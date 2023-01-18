@@ -3,6 +3,7 @@ import imagesLoaded from 'imagesloaded'
 
 export default class Slider {
   constructor () {
+    console.warn('in constructor');
     this.slides = []
     this.controls = document.getElementsByClassName('slide__control')
     this.loading = document.getElementById("loading")
@@ -28,6 +29,7 @@ export default class Slider {
     this.inAnimation = false
 
     imagesLoaded( this.mainContainer, (instance) => {
+      console.warn('imageloaded');
 
       this.removeLoading()
 
@@ -148,6 +150,7 @@ export default class Slider {
    * @param {number} index The index of slide to be shown.
    */
   move (index) {
+    console.warn("in move");
     if( this.direction === true ) {
       this.current ++
       if( this.current > this.len - 1 ) {
@@ -192,11 +195,17 @@ export default class Slider {
    * Move the slide.
    */
   changeSlide () {
+    console.warn("in changes liders");
     if( this.inAnimation ) {
       return
     }
 
     this.inAnimation = true;
     this.slides[this.current].reverse()
+  }
+
+  focusCurrent() {
+    this.slides[this.current].focus();
+    console.warn("on focus current", this.current);
   }
 }

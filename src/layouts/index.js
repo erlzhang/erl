@@ -17,7 +17,7 @@ export default function({ data, children, pageContext }) {
         <ContextProviderComponent>
           <ContextConsumer>
             {({ data, set }) => (
-              <div className={`book__wrapper sidebar-right${data.showSummary?' with-summary': ''}`} id="bookMain">
+              <div className={`book__wrapper dark-mode sidebar-right${data.showSummary?' with-summary': ''}`} id="bookMain">
                 <Summary summary={summary} handleClose={() => set({showSummary: false})}></Summary>
                 <div className="book__body">
                   { children }
