@@ -124,7 +124,7 @@ export const query = graphql`
         logo
       }
     }
-    allBook(sort: {fields: fields___end, order: DESC}) {
+    allBook(sort: {fields: [fields___end,fields___start], order: [DESC,DESC]}) {
       nodes {
         fields {
           title
