@@ -58,6 +58,8 @@ export default class Slide {
       width: '0px',
       opacity: 0
     }), '-=0.2');
+    let windowWidth = window.innerWidth;
+    if (windowWidth >= 768) {
     timeLine.add( TweenMax.to(this.img, 0.45, {
       height: "100%",
       width: "35%",
@@ -65,6 +67,15 @@ export default class Slide {
       top: 0,
       transform: "translateX(0)"
     }), '-=0.05')
+    } else {
+    timeLine.add( TweenMax.to(this.img, 0.45, {
+      width: "100%",
+      height: "35%",
+      left: 0,
+      top: 0,
+      transform: "translateX(0)"
+    }), '-=0.05')
+    }
   }
 
   /**
@@ -77,7 +88,7 @@ export default class Slide {
     if( this.timeLine ) {
       this.timeLine.restart()
       return
-    } 
+    }
 
     this.timeLine = new TimelineLite();
 
@@ -115,11 +126,11 @@ export default class Slide {
       self.hide()
       self.slider.move()
     });
-    
+
     this.timeLine.eventCallback('onStart', function() {
       self.slider.inAnimation = true
     });
-    
+
     this.timeLine.eventCallback('onComplete', function() {
       self.slider.inAnimation = false
     })
@@ -140,6 +151,6 @@ export default class Slide {
   show () {
     this.ele.style.opacity = '1'
     this.ele.style.zIndex = '5'
-    this.control.classList.add("current") 
+    this.control.classList.add("current")
   }
 }

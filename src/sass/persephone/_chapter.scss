@@ -68,7 +68,7 @@
   @include transition(left 250ms ease);
 }
 .book__body .body__inner {
-  position: absolute;
+  // position: absolute;
   top: 0;
   right: 0;
   left: 0;
@@ -116,9 +116,9 @@
     Right/Left buttons to change page
 */
 .navigation {
-  position: absolute;
-  top: 50px;
-  bottom: 0;
+  position: fixed;
+  top: 100px;
+  bottom: 100px;
   margin: 0;
   max-width: 150px;
   min-width: 90px;
@@ -131,6 +131,7 @@
   color: var(--gray-light);
   text-align: center;
   @include transition(all 0.35s ease);
+  z-index: 1;
 }
 .navigation:hover {
   text-decoration: none;
@@ -141,6 +142,9 @@
 }
 .navigation.navigation-prev {
   left: 0;
+}
+.with-summary .navigation.navigation-prev {
+  left: 300px;
 }
 .navi-title {
   position: absolute;
@@ -171,7 +175,7 @@
   }
 }
 .mobile-navigation {
-  display: none;;
+  display: none;
 }
 
 @media (max-width: 1240px) {
@@ -180,33 +184,40 @@
     display: none;
   }
   .mobile-navigation {
-    display: block;
     height: 40px;
     margin-bottom: 30px;
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     .navigation {
       position: static;
       top: auto;
-      max-width: 50%;
       width: 50%;
-      display: flex;
+      @include flex();
+      @include flex-row();
       color: var(--grayer);
+      justify-content: space-between;
+      .navi-title {
+        position: static;
+        display: block;
+        opacity: 1;
+        width: auto;
+        transform: none;
+        min-width: 0;
+        flex: 1;
+      }
+      svg {
+        flex-shrink: 0;
+      }
     }
-    .navigation.navigation.navigation-prev {
-      align-items: flex-start;
+    .navigation.navigation-prev {
     }
-    .navigation.navigation.navigation-next {
-      align-items: flex-end;
+    .navigation.navigation-next {
+      flex-direction: row-reverse;
     }
     .navigation.navigation-unique {
       max-width: 100%;
       width: 100%;
-    }
-    .navi-title {
-      opacity: 1;
-      width: auto;
-      flex: 1;
-      transform: none;
     }
     .navigation:hover {
       .navi-title {

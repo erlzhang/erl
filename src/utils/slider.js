@@ -205,7 +205,8 @@ export default class Slider {
   }
 
   focusCurrent() {
-    this.slides[this.current].focus();
     console.warn("on focus current", this.current);
+    this.slides[this.current].focus();
+    
   }
 }

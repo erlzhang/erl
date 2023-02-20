@@ -6,48 +6,9 @@ import { Loading } from "./icons";
 import Link from "gatsby-plugin-transition-link";
 import gsap from 'gsap';
 import { getImgCover } from "../utils/style";
+import { fadeIn } from "../utils/transitions/book";
 
 function SlideImage({ site, slide, onExit }) {
-  const fadeInNext = ({ node, entry }) => {
-    gsap.fromTo(
-      ".book__title",
-      {
-        opacity: 0,
-        transform: "translateY(100%)"
-      },
-      {
-        opacity: 1,
-        transform: "translateY(0)",
-        duration: 0.35
-      }
-    );
-    gsap.fromTo(
-      ".book__desc",
-      {
-        opacity: 0,
-        transform: "translateY(100%)"
-      },
-      {
-        opacity: 1,
-        transform: "translateY(0)",
-        duration: 0.35,
-        delay: 0.25
-      }
-    );
-    gsap.fromTo(
-      ".book__icon",
-      {
-        opacity: 0,
-        transform: "translateX(-100%)"
-      },
-      {
-        opacity: 1,
-        transform: "translateX(0)",
-        duration: 0.35,
-        delay: 0.5
-      }
-    );
-  }
   return (
     <div className="slide__img">
       <Link
@@ -62,7 +23,7 @@ function SlideImage({ site, slide, onExit }) {
         entry={{
           delay: 1,
           length: 1,
-          trigger: fadeInNext,
+          trigger: fadeIn,
         }}
       ></Link>
       <div className="slide__img_placehold"></div>
@@ -89,7 +50,21 @@ function Slide({ slide, side, site, onExit }) {
         <SlideImage site={site} slide={slide} onExit={onExit}></SlideImage>
       }
       <div className={`slide__text slide__text_${side}`}>
-        <Link to={`/${slide.slug}`} className="slide__link" title={slide.fields.title}></Link>
+        <Link
+          to={`/${slide.slug}`}
+          className="slide__link"
+          title={slide.fields.title}
+          exit={{
+            length: 1,
+            trigger: onExit,
+            state: { pass: 'this to the exiting page' }
+          }}
+          entry={{
+            delay: 1,
+            length: 1,
+            trigger: fadeIn,
+          }}
+        ></Link>
         <div className="slide__title">
           <div className="slide__title_inner">
             <h2 className="slide__title_text">{ slide.fields.title }</h2>
@@ -103,7 +78,7 @@ function Slide({ slide, side, site, onExit }) {
       </div>
       {
         side === 'left' &&
-        <SlideImage site={site} slide={slide}></SlideImage>
+        <SlideImage site={site} slide={slide} onExit={onExit}></SlideImage>
       }
     </div>
   )

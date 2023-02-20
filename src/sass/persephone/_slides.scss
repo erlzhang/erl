@@ -50,7 +50,6 @@
 .slide__img_entity {
   height: 100%;
   width: 100%;
-  
 }
 // .slide__img img {
 //   height: 100%;
@@ -270,7 +269,7 @@
   }
   .slide__img {
     width: calc(100% - 3rem);
-    height: auto;
+    height: calc(100% - 5rem);
   }
   .slide__img img {
     width: 100%;
@@ -280,4 +279,16 @@
     position: absolute;
     margin-top: 0;
   }
+.slide__text_left {
+  text-align: right;
+  right: 0;
+  left: auto;
+  margin-right: 45px;
+}
+.slide__text_right {
+  text-align: left;
+  left: 0;
+  margin-left: 45px;
+  right: auto;
+}
 }
