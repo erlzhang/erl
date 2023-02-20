@@ -1,28 +1,70 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { getDate } from "../utils/book";
 import Slider from "../utils/slider";
 import { Loading } from "./icons";
-import { Link } from "gatsby";
+// import { Link } from "gatsby";
+import Link from "gatsby-plugin-transition-link";
+import gsap from 'gsap';
+import { getImgCover } from "../utils/style";
+import { fadeIn } from "../utils/transitions/book";
 
-function SlideImage({ site, slide }) {
+function SlideImage({ site, slide, onExit }) {
   return (
     <div className="slide__img">
-      <Link to={`/${slide.slug}`} className="slide__link" title={slide.fields.title}></Link>
+      <Link
+        to={`/${slide.slug}`}
+        className="slide__link"
+        title={slide.fields.title}
+        exit={{
+          length: 1,
+          trigger: onExit,
+          state: { pass: 'this to the exiting page' }
+        }}
+        entry={{
+          delay: 1,
+          length: 1,
+          trigger: fadeIn,
+        }}
+      ></Link>
       <div className="slide__img_placehold"></div>
-      <img src={site.imgPrefix + slide.fields.img} className="slide__img_entity" alt={slide.fields.title} />
+      <div
+        className="slide__img_entity"
+        style={getImgCover(site.imgPrefix + slide.fields.img)}
+      ></div>
+      <img
+        src={site.imgPrefix + slide.fields.img}
+        style={{
+          display: "none"
+        }}
+        alt={slide.fields.title}
+      />
     </div>
   )
 }
 
-function Slide({ slide, side, site }) {
+function Slide({ slide, side, site, onExit }) {
   return (
     <div className="slide__section">
       {
         side === 'right' &&
-        <SlideImage site={site} slide={slide}></SlideImage>
+        <SlideImage site={site} slide={slide} onExit={onExit}></SlideImage>
       }
       <div className={`slide__text slide__text_${side}`}>
-        <Link to={`/${slide.slug}`} className="slide__link" title={slide.fields.title}></Link>
+        <Link
+          to={`/${slide.slug}`}
+          className="slide__link"
+          title={slide.fields.title}
+          exit={{
+            length: 1,
+            trigger: onExit,
+            state: { pass: 'this to the exiting page' }
+          }}
+          entry={{
+            delay: 1,
+            length: 1,
+            trigger: fadeIn,
+          }}
+        ></Link>
         <div className="slide__title">
           <div className="slide__title_inner">
             <h2 className="slide__title_text">{ slide.fields.title }</h2>
@@ -36,26 +78,34 @@ function Slide({ slide, side, site }) {
       </div>
       {
         side === 'left' &&
-        <SlideImage site={site} slide={slide}></SlideImage>
+        <SlideImage site={site} slide={slide} onExit={onExit}></SlideImage>
       }
     </div>
   )
 }
 
 export default function({ slides, site }) {
-  const items = slides.map((slide, index) => {
-    return (
-      <Slide site={site} slide={slide} key={slide.slug} side={index % 2 === 1 ? 'left' : 'right'}></Slide>
-    )
-  });
-
-  let slider;
+  const slider = useRef(null);
 
   useEffect(() => {
-    if (!slider) {
-      slider = new Slider();
+    if (slider.current == null) {
+      slider.current = new Slider();
     }
   })
+
+  const items = slides.map((slide, index) => {
+    return (
+      <Slide
+        site={site}
+        slide={slide}
+        key={slide.slug}
+        onExit={({ node, exit }) => {
+          slider.current && slider.current.focusCurrent()
+        }}
+        side={index % 2 === 1 ? 'left' : 'right'}
+      ></Slide>
+    )
+  });
 
   // const [current, setCurrent] = useState(0);
 
@@ -71,7 +121,6 @@ export default function({ slides, site }) {
     )
   });
 
-
   return (
     <>
       <Loading></Loading>
@@ -80,14 +129,20 @@ export default function({ slides, site }) {
       </main>
 
       <ul className="slide__controls">
-        <div className="slide__control__icon slide__control_top" id="prevBtn">
+        <div
+          className="slide__control__icon slide__control_top"
+          id="prevBtn"
+        >
           <svg width="40" height="40">
             <circle className="circle-progress" r="18" cy="20" cx="20" stroke-linejoin="round" stroke-linecap="round" />
           </svg>
           <span className="slide__control_arrow slide__control_up"></span>
         </div>
         { controls }
-        <div className="slide__control__icon slide__control_bottom" id="nextBtn">
+        <div
+          className="slide__control__icon slide__control_bottom"
+          id="nextBtn"
+        >
           <svg width="40" height="40">
             <circle className="circle-progress" r="18" cy="20" cx="20" stroke-linejoin="round" stroke-linecap="round" />
           </svg>

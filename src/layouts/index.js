@@ -8,12 +8,12 @@ import {
 } from "../utils/summary";
 import ContextConsumer, { ContextProviderComponent }  from "./Context"
 
-export default function({ data, children, pageContext }) {
-  if (pageContext.layout === 'chapter') {
+function ChapterLayout({ data, children }) {
     const post = data.markdownRemark;
     const summary = parseSummary(data.summary, data.book, post.fields.slug);
     const { prev, next } = getPrevAndNext(post.fields.slug, summary);
-    return ( <Container>
+    return (
+      <>
         <ContextProviderComponent>
           <ContextConsumer>
             {({ data, set }) => (
@@ -27,13 +27,20 @@ export default function({ data, children, pageContext }) {
             )}
           </ContextConsumer>
         </ContextProviderComponent>
-      </Container>
-    );
-  } else {
+      </>
+    )
+}
+
+export default function({ data, children, pageContext }) {
     return (
       <Container>
-        { children }
+        {
+          pageContext.layout === 'chapter' ?
+          <ChapterLayout data={data}>
+            { children }
+          </ChapterLayout> :
+          children
+        }
       </Container>
-    )
-  }
+    );
 }

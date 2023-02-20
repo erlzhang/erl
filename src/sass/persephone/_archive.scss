@@ -27,6 +27,9 @@
   @include flex();
   @include flex-middle();
   @include flex-column();
+  &.with-cover {
+    z-index: 100;
+  }
   h1 {
     font-size: 1.5rem;
     margin-bottom: 0.75rem;
@@ -41,21 +44,22 @@
     color: var(--grayer);
     font-size: 0.875rem;
   }
+  .archive__header_cover {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+  }
 }
 .archive__content {
   width: 65%;
-  min-height: 100%;
+  height: 100%;
   margin-left: 35%;
-  @include flex();
-  @include flex-column();
-  flex-wrap: nowrap;
-  justify-content: center;
+  overflow-y: auto;
 }
 .archive__list {
   width: 100%;
   padding: 3.5rem 0 2.5rem;
-  height: 100vh;
-  overflow-y: auto;
 //   flex: 1;
 //   @include flex();
 //   @include flex-column();

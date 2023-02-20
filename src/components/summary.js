@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "gatsby";
+import Link from "gatsby-plugin-transition-link";
 import { Close } from "./icons";
+import { onEnterChapter } from "../utils/transitions/chapter";
 
 function ListItem({ item, onClick }) {
   const children = item.children && item.children.map(sub => {
@@ -11,7 +12,12 @@ function ListItem({ item, onClick }) {
   return (
     // <li className="chapter {% if part.url == page.url -%}active{% endif -%}">
     <li className={`chapter${item.active ? ' active': ''}`}>
-      <Link title={item.title} onClick={onClick} to={item.href}>{ item.title }</Link>
+      <Link
+        title={item.title}
+        onClick={onClick}
+        to={item.href}
+        entry={onEnterChapter}
+      >{ item.title }</Link>
       {
         children && children.length &&
         <ul className="articles">
@@ -31,7 +37,7 @@ export default function({ summary, handleClose }) {
 
     setTimeout(() => {
       handleClose && handleClose();
-    }, 100);
+    }, 300);
   }
 
   const posts = summary.slice(1).map(post => {
