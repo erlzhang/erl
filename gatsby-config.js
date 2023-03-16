@@ -9,6 +9,7 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-sass",
+    `gatsby-plugin-netlify-cms`,
     // `gatsby-plugin-layout`,
     {
       resolve: "gatsby-plugin-transition-link",

@@ -1,0 +1,21 @@
+backend:
+  name: test-repo
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: 'blue'
+    label: '爵士与蓝调'
+    label_singular: 'Chapter'
+    folder: 'src/_books/blue'
+    create: true
+    media_folder: ''
+    public_folder: ''
+    identifier_field: name
+    slug: '{{name}}'
+    editor:
+      preview: false
+    fields:
+      - {label: "Name", name: "name", widget: "string"}
+      - { label: 'Body', name: 'body', widget: 'markdown' }
