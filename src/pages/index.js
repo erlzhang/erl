@@ -8,10 +8,10 @@ export default function({ data }) {
   const slides = data.allBook.nodes;
   const site = data.site.siteMetadata;
   return (
-    <>
+    <div className="home">
       <Header site={site}></Header>
       <Slides site={site} slides={slides}></Slides>
-    </>
+    </div>
   )
 }
 
@@ -34,17 +34,18 @@ export const query = graphql`
         logo
       }
     }
-    allBook(sort: {fields: [fields___end,fields___start], order: [DESC,DESC]}, limit: 4) {
+    allBook(sort: {fields: [summary___end,summary___start], order: [DESC,DESC]}, limit: 4) {
       nodes {
-        fields {
+        summary {
           title
           start
           end
           img
+          slug
         }
-        slug
+        name
       }
     }
   }
-  
+
 `

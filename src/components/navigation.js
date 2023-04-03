@@ -12,7 +12,7 @@ export default function({ prev, next }) {
       {
         prev &&
         <Link
-          to={prev.href}
+          to={prev.slug}
           className={'navigation navigation-prev'}
           aria-label={`Previous page: ${ prev.title }`}
           entry={onEnterChapter}
@@ -24,7 +24,7 @@ export default function({ prev, next }) {
       {
         next &&
         <Link
-          to={next.href}
+          to={next.slug}
           className="navigation navigation-next"
           aria-label={`Next page: ${ next.title }`}
           entry={onEnterChapter}

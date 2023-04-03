@@ -12,9 +12,9 @@ function SlideImage({ site, slide, onExit }) {
   return (
     <div className="slide__img">
       <Link
-        to={`/${slide.slug}`}
+        to={slide.summary.slug}
         className="slide__link"
-        title={slide.fields.title}
+        title={slide.summary.title}
         exit={{
           length: 1,
           trigger: onExit,
@@ -29,14 +29,14 @@ function SlideImage({ site, slide, onExit }) {
       <div className="slide__img_placehold"></div>
       <div
         className="slide__img_entity"
-        style={getImgCover(site.imgPrefix + slide.fields.img)}
+        style={getImgCover(site.imgPrefix + slide.summary.img)}
       ></div>
       <img
-        src={site.imgPrefix + slide.fields.img}
+        src={site.imgPrefix + slide.summary.img}
         style={{
           display: "none"
         }}
-        alt={slide.fields.title}
+        alt={slide.summary.title}
       />
     </div>
   )
@@ -51,9 +51,9 @@ function Slide({ slide, side, site, onExit }) {
       }
       <div className={`slide__text slide__text_${side}`}>
         <Link
-          to={`/${slide.slug}`}
+          to={slide.summary.slug}
           className="slide__link"
-          title={slide.fields.title}
+          title={slide.summary.title}
           exit={{
             length: 1,
             trigger: onExit,
@@ -67,12 +67,12 @@ function Slide({ slide, side, site, onExit }) {
         ></Link>
         <div className="slide__title">
           <div className="slide__title_inner">
-            <h2 className="slide__title_text">{ slide.fields.title }</h2>
+            <h2 className="slide__title_text">{ slide.summary.title }</h2>
           </div>
         </div>
         <div className="slide__time">
           <div className="slide__time_inner">
-            <p className="slide__time_text">{ getDate(slide) }</p>
+            <p className="slide__time_text">{ getDate(slide.summary) }</p>
           </div>
         </div>
       </div>
@@ -98,7 +98,7 @@ export default function({ slides, site }) {
       <Slide
         site={site}
         slide={slide}
-        key={slide.slug}
+        key={slide.name}
         onExit={({ node, exit }) => {
           slider.current && slider.current.focusCurrent()
         }}

@@ -1,40 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import { graphql, Link } from "gatsby"
-import {
-  parseSummary,
-  getPrevAndNext
-} from '../utils/summary';
 import { getImgCover } from "../utils/style";
+import {
+  getDate,
+  formatNum
+} from "../utils/book";
+import {
+  Logo
+} from "../components/icons";
+import {
+  getLastReadChapter
+} from "../utils/reader";
 
-export default function({ data }) {
-  const post = data.markdownRemark;
+export default function({ data, pageContext }) {
+  const book = data.markdownRemark;
   const site = data.site.siteMetadata;
-  const book = data.book;
+  //let next = book.fields.next;
+  const wordCount = data.book.summary.wordCount;
+  const chapters = data.book.summary.chapters;
 
-  const path = `/${book.slug}`
-
-  const summary = parseSummary(data.summary, book, null);
-  const { next } = getPrevAndNext(path, summary);
+  let next = getLastReadChapter(pageContext.book, chapters);
 
   return (
     <>
       <div className="book sidebar-right">
-        <Header site={site}></Header>
+        <Link to="/archive" className="logo">
+          <Logo/>
+        </Link>
         <div
           className="book__cover"
-          style={getImgCover(site.imgPrefix + book.fields.img)}
+          style={getImgCover(site.imgPrefix + book.frontmatter.img)}
         >
         </div>
         <div className="book__content">
           <div className="book__content_inner">
-            <h1 className="book__title">{ book.fields.title }</h1>
-            <div className="book__desc" dangerouslySetInnerHTML={{ __html: post.html }}>
+            <footer className="book__meta">
+              <span>{ book.frontmatter.category }</span>
+              <span>{ getDate(book.frontmatter) }</span>
+              <span>{ formatNum(wordCount) }字</span>
+            </footer>
+            <h1 className="book__title">{ book.frontmatter.title }</h1>
+            <div className="book__desc" dangerouslySetInnerHTML={{ __html: book.html }}>
             </div>
             {
               next &&
-              <Link to={next.href} className="book__more">
+              <Link
+                to={next.slug}
+                title={`继续阅读：${next.title}`}
+                className="book__more"
+              >
                 <div className="book__icon">
                   <svg width="80" height="80">
                     <circle className="circle-progress" r="36" cy="40" cx="40"  stroke-linejoin="round" stroke-linecap="round" />
@@ -43,7 +59,6 @@ export default function({ data }) {
                 </div>
               </Link>
             }
-            
             </div>
           <Footer site={site}></Footer>
         </div>
@@ -54,10 +69,10 @@ export default function({ data }) {
 
 export const Head = ({data}) => {
   const site = data.site.siteMetadata;
-  const book = data.book;
+  const book = data.markdownRemark;
   return (
     <>
-      <title>{ book.fields.title } | { site.title }</title>
+      <title>{ book.frontmatter.title } | { site.title }</title>
     </>
   )
 }
@@ -73,24 +88,31 @@ export const query = graphql`
         email
       }
     }
+    book(name: {eq: $book}) {
+      summary {
+        wordCount
+        chapters {
+          title
+          slug
+          children {
+            title
+            slug
+          }
+        }
+      }
+    }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html,
       fields {
         slug
       }
-    }
-    book(slug: {eq: $book}) {
-      fields {
+      frontmatter {
         title
         img
+        start
+        end
+        category
       }
-      slug
-    }
-    summary: markdownRemark(fields: {
-      book: {eq: $book},
-      summary: {eq: true}
-    }) {
-      htmlAst
     }
   }
 `

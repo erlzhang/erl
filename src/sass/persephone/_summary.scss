@@ -6,9 +6,8 @@
   z-index: 1;
   overflow-y: auto;
   width: 300px;
-  color: var(--grayer);
-  // background: var(--white);
-  border-right: 1px solid rgba(0, 0, 0, 0.07);
+  color: var(--secondary);
+  border-right: 1px solid var(--border-color);
   -webkit-transition: left 250ms ease;
   -moz-transition: left 250ms ease;
   -o-transition: left 250ms ease;
@@ -28,10 +27,6 @@
 .close-summary {
   display: none;
 }
-.dark-mode .book-summary {
-  color: var(--light-gray);
-  border-color: var(--grayer);
-}
 .book-summary ul.summary {
   list-style: none;
   margin: 0;
@@ -49,16 +44,13 @@
   padding: 10px 15px;
   padding-top: 20px;
   text-transform: uppercase;
-  color: var(--gray);
+  color: var(--default);
 }
 .book-summary ul.summary li.divider {
   height: 1px;
   margin: 7px 0;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.07);
-}
-.dark-mode .book-summary ul.summary li.divider {
-  background-color: var(--grayer);
+  background: var(--border-color);
 }
 .book-summary ul.summary li i.fa-check {
   display: none;
@@ -78,7 +70,7 @@
 .book-summary ul.summary li a,
 .book-summary ul.summary li span {
   display: block;
-  padding: 10px 15px;
+  padding: 8px 15px;
   border-bottom: none;
   color: inherit;
   background: transparent;
@@ -86,6 +78,11 @@
   overflow: hidden;
   white-space: nowrap;
   position: relative;
+  &.volume {
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 0.85rem;
+  }
 }
 .book-summary ul.summary li a:hover {
   text-decoration: underline;
@@ -94,12 +91,12 @@
   outline: none;
 }
 .book-summary ul.summary li.active > a {
-  color: var(--blue);
+  color: var(--hightlight);
   background: transparent;
   text-decoration: none;
 }
 .book-summary ul.summary li ul {
-  padding-left: 20px;
+  padding-left: 10px;
 }
 @media (max-width: 1240px) {
   // .book-summary {
@@ -110,7 +107,7 @@
   .book__wrapper.with-summary .book-summary {
     width: 100%;
     position: fixed;
-    background-color: white;
+    background-color: var(--bg-color);
     height: 100%;
     z-index: 55555;
   }

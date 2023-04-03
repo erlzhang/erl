@@ -18,11 +18,7 @@ body {
 }
 .container {
   background-color: var(--bg-color);
-  color: var(--dark);
-}
-.container.dark-mode {
-  background-color: var(--dark);
-  color: var(--lighter);
+  color: var(--text-color);
 }
 main {
   flex: 1;
@@ -71,7 +67,7 @@ a, a:hover, a:visited, a:active {
   right: -2px;
   border-radius: 30px;
   border: 2px solid transparent;
-  border-top-color: var(--gray);
+  border-top-color: var(--secondary);
   animation: spin 1s linear infinite;
 }
 .error-container {
@@ -100,7 +96,7 @@ a, a:hover, a:visited, a:active {
 .site-footer {
   line-height: 1.5rem;
   padding: 1.25rem 0 0.75rem;
-  color: var(--gray);
+  color: var(--default);
   font-size: 0.75rem;
   text-align: center;
   width: 100%;

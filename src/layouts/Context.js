@@ -5,6 +5,7 @@ const defaultContextValue = {
   data: {
     // set your initial data shape here
     showSummary: false,
+    darkMode: false
   },
   set: () => {},
 }

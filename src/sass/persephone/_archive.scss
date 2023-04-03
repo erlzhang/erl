@@ -16,7 +16,7 @@
 .archive__header {
   width: 35%;
   height: 100%;
-  border-right: 1px solid var(--lighter);
+  border-right: 1px solid var(--border-color);
   text-align: center;
   justify-content: center;
   position: fixed;
@@ -41,7 +41,7 @@
     width: 70%;
     max-width: 345px;
     margin: 0 0 1.5rem;
-    color: var(--grayer);
+    color: var(--secondary);
     font-size: 0.875rem;
   }
   .archive__header_cover {

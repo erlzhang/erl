@@ -270,6 +270,8 @@
   .slide__img {
     width: calc(100% - 3rem);
     height: calc(100% - 5rem);
+    top: auto;
+    bottom: 0
   }
   .slide__img img {
     width: 100%;

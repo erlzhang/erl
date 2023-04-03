@@ -2,29 +2,37 @@ import React from "react";
 import Container from "./container";
 import Summary from "../components/summary";
 import Navigation from "../components/navigation";
-import {
-  parseSummary,
-  getPrevAndNext
-} from "../utils/summary";
 import ContextConsumer, { ContextProviderComponent }  from "./Context"
 
 function ChapterLayout({ data, children }) {
     const post = data.markdownRemark;
-    const summary = parseSummary(data.summary, data.book, post.fields.slug);
-    const { prev, next } = getPrevAndNext(post.fields.slug, summary);
+    const prev = post.fields.prev;
+    const next = post.fields.next;
+    const summary = data.book.summary;
+
     return (
       <>
         <ContextProviderComponent>
           <ContextConsumer>
-            {({ data, set }) => (
-              <div className={`book__wrapper sidebar-right${data.showSummary?' with-summary': ''}`} id="bookMain">
-                <Summary summary={summary} handleClose={() => set({showSummary: false})}></Summary>
-                <div className="book__body">
+            {({ data, set }) => {
+              let _className = 'book__wrapper sidebar-right';
+              if (data.showSummary) {
+                _className += ' with-summary';
+              }
+              if (data.darkMode) {
+                _className += ' dark-mode';
+              }
+               return(<div className={_className} id="bookMain">
+                <Summary
+                  summary={summary}
+                  current={post.fields.slug}
+                  handleClose={() => set({showSummary: false})}></Summary>
+                <div className="book__body" id="book-body">
                   { children }
                   <Navigation prev={prev} next={next}></Navigation>
                 </div>
-              </div>
-            )}
+              </div>);
+            }}
           </ContextConsumer>
         </ContextProviderComponent>
       </>

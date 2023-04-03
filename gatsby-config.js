@@ -16,8 +16,6 @@ module.exports = {
           layout: require.resolve(`./src/layouts/index.js`)
         }
     },
-    require.resolve(`./plugins/source-books`),
-    "gatsby-transformer-remark",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -26,6 +24,7 @@ module.exports = {
       },
       __key: "books",
     },
+    "gatsby-transformer-remark",
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -48,6 +47,7 @@ module.exports = {
       },
       __key: "pages",
     },
+    require.resolve(`./plugins/source-books`),
     {
       resolve: `gatsby-plugin-baidu-tongji`,
       options: {

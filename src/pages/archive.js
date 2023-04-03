@@ -5,10 +5,12 @@ import { graphql, Link } from "gatsby"
 import {
   getAllCategories,
   getDate,
-  getWordCountOfBooks,
   formatNum
 } from "../utils/book";
 import Social from "../components/social";
+import {
+  Logo
+} from "../components/icons";
 
 function SiteInfo({ site }) {
   return (
@@ -32,23 +34,18 @@ export default function({ data }) {
   const [hovered, setHovered] = useState(false);
   const [filtered, setFiltered] = useState(categories[0]);
 
-  const wordCounts = getWordCountOfBooks(
-    data.allMarkdownRemark.nodes,
-    books
-  );
-
-  const items = books.filter(book => filtered == "全部" || filtered === book.fields.category).map((book) => {
+  const items = books.filter(book => filtered == "全部" || filtered === book.summary.category).map((book) => {
     return (
       <li
-        className={`archive__item${(!hovered || hovered === book.slug)?'':' fade'}`}
-        key={book.slug}
-        onMouseEnter={() => setHovered(book.slug)}
+        className={`archive__item${(!hovered || hovered === book.name)?'':' fade'}`}
+        key={book.name}
+        onMouseEnter={() => setHovered(book.name)}
       >
-        <Link to={`/${book.slug}`} className="archive__link clearfix">
-          <span className="archive__time">{ getDate(book) }</span>
-          <span className="archive__title">{ book.fields.title }</span>
-          <span className="archive__tag">{ book.fields.category }</span>
-          <span className="archive__meta">{ formatNum(wordCounts[book.slug]) }字</span>
+        <Link to={book.summary.slug} className="archive__link clearfix">
+          <span className="archive__time">{ getDate(book.summary) }</span>
+          <span className="archive__title">{ book.summary.title }</span>
+          <span className="archive__tag">{ book.summary.category }</span>
+          <span className="archive__meta">{ book.summary.wordCount }字</span>
         </Link>
       </li>
     )
@@ -68,16 +65,18 @@ export default function({ data }) {
 
   const getWordCountSum = () => {
     let sum = 0;
-    books.filter(book => filtered == "全部" || filtered === book.fields.category)
+    books.filter(book => filtered == "全部" || filtered === book.summary.category)
          .forEach(book => {
-            sum += wordCounts[book.slug];
+            sum += book.summary.wordCount;
          });
     return sum;
   }
 
   return (
-    <>
-      <Header site={site}></Header>
+    <div className="archive-container">
+      <Link to="/" className="logo">
+        <Logo/>
+      </Link>
       <main className="archive">
         <div
           className="archive__header"
@@ -99,7 +98,7 @@ export default function({ data }) {
         </div>
         <Footer site={site}></Footer>
       </main>
-    </>
+    </div>
   )
 }
 
@@ -124,33 +123,19 @@ export const query = graphql`
         logo
       }
     }
-    allBook(sort: {fields: [fields___end,fields___start], order: [DESC,DESC]}) {
-      nodes {
-        fields {
-          title
-          start
-          end
-          img
-          category
-        }
+    allBook(sort: {fields: [summary___end,summary___start], order: [DESC,DESC]}) {
+    nodes {
+      summary {
         slug
+        wordCount
+        title
+        start
+        end
+        category
       }
-    }
-    allMarkdownRemark(
-      filter: {
-        fields: {
-          index: {ne: true},
-          summary: {ne: true}
-        }
-      }
-    ) {
-      nodes {
-        fields {
-          book,
-          wordCount
-        }
-      }
+      name
     }
   }
-  
+  }
+
 `
