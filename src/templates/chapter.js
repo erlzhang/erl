@@ -22,7 +22,7 @@ export default function Chapter({ data, pageContext }) {
   const summary = data.book.summary.chapters;
   const bookTitle = data.book.summary.title;
 
-  const { title, index } = post.frontmatter;
+  const { title, index, img } = post.frontmatter;
   const { prev, next, isVolume } = post.fields;
 
   const [progress, setProgress] = useState(0);
@@ -84,6 +84,12 @@ export default function Chapter({ data, pageContext }) {
               }
               <h1 class="chapter__title">{ title }</h1>
             </header>
+            {
+              isVolume && img &&
+              <figure className="chapter__figure">
+                <img src={site.imgPrefix + img} alt={title}/>
+              </figure>
+            }
             <article
               className="chapter__content content"
               dangerouslySetInnerHTML={{ __html: post.html.replaceAll('/img/', site.imgPrefix+'/img/') }}
@@ -127,6 +133,7 @@ export const query = graphql`
         title
         imgPrefix
         logo
+        email
       }
     }
     markdownRemark(fields: {slug: {eq: $slug}}) {
@@ -145,6 +152,7 @@ export const query = graphql`
     frontmatter {
       title
       index
+      img
     }
     html
   }

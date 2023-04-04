@@ -45,7 +45,7 @@ export default function({ data }) {
           <span className="archive__time">{ getDate(book.summary) }</span>
           <span className="archive__title">{ book.summary.title }</span>
           <span className="archive__tag">{ book.summary.category }</span>
-          <span className="archive__meta">{ book.summary.wordCount }字</span>
+          <span className="archive__meta">{ formatNum(book.summary.wordCount) }字</span>
         </Link>
       </li>
     )

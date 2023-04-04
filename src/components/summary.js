@@ -3,7 +3,7 @@ import Link from "gatsby-plugin-transition-link";
 import { Close } from "./icons";
 import { onEnterChapter } from "../utils/transitions/chapter";
 
-function ListItem({ item, onClick, current }) {
+function ListItem({ item, onClick, current, className }) {
   const children = item.children && item.children.map(sub => {
     return (
       <ListItem
@@ -14,14 +14,23 @@ function ListItem({ item, onClick, current }) {
       ></ListItem>
     )
   })
+  let _className = "chapter";
+  if (children && children.length > 0) {
+    _className += " volume";
+  }
+  if (className) {
+    _className += " " + className;
+  }
+  if (item.slug === current) {
+    _className += " active";
+  }
   return (
-    <li className={`chapter${item.slug === current? ' active': ''}`}>
+    <li className={_className}>
       <Link
         title={item.title}
         onClick={onClick}
         to={item.slug}
         entry={onEnterChapter}
-        className={children && children.length > 0 ? 'volume' : ''}
       >{ item.title }</Link>
       {
         children && children.length > 0 &&
@@ -66,8 +75,7 @@ export default function({ summary, current, handleClose }) {
         </span>
         <nav role="navigation">
           <ul className="summary">
-            <ListItem onClick={handleLinkClick} item={summary}></ListItem>
-            <li className="divider"></li>
+            <ListItem onClick={handleLinkClick} item={summary} className="header"></ListItem>
             { posts }
           </ul>
         </nav>

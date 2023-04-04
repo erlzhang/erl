@@ -36,15 +36,23 @@
   -o-transition: top 0.5s ease;
   transition: top 0.5s ease;
   font-size: 16px;
+  padding: 0 0 20px;
 }
 .book-summary ul.summary li {
   list-style: none;
+  &.volume > a {
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 0.85rem;
+  }
 }
 .book-summary ul.summary li.header {
   padding: 10px 15px;
   padding-top: 20px;
   text-transform: uppercase;
   color: var(--default);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 7px;
 }
 .book-summary ul.summary li.divider {
   height: 1px;
@@ -78,11 +86,6 @@
   overflow: hidden;
   white-space: nowrap;
   position: relative;
-  &.volume {
-    color: var(--text-color);
-    font-weight: bold;
-    font-size: 0.85rem;
-  }
 }
 .book-summary ul.summary li a:hover {
   text-decoration: underline;
