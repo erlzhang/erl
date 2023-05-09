@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   Ellipsis,
-  Moon,
-  Sun,
-  Setting,
   Logo
 } from "../components/icons";
 import { graphql, Link } from "gatsby"
@@ -12,9 +9,15 @@ import Footer from "../components/footer";
 import ContextConsumer from "../layouts/Context"
 import Subscribe from "../components/subscribe";
 import Navigation from "../components/navigation";
-import {
-  setReadProgress
-} from "../utils/reader";
+
+function getTitle(title, index, isVolume) {
+  let str = "";
+  if (!isVolume && index > 0 && index < 100) {
+    str += index + ". ";
+  }
+  str += title;
+  return str;
+}
 
 export default function Chapter({ data, pageContext }) {
   const post = data.markdownRemark;
@@ -24,26 +27,6 @@ export default function Chapter({ data, pageContext }) {
 
   const { title, index, img } = post.frontmatter;
   const { prev, next, isVolume } = post.fields;
-
-  const [progress, setProgress] = useState(0);
-
-  let bindEvent = false;
-
-  useEffect(() => {
-    if (bindEvent) return;
-
-    bindEvent = true;
-    const dom = document.getElementById("book-body");
-    const containerHeight = dom.offsetHeight;
-    dom.onscroll = (e) => {
-      const scroll = dom.scrollTop;
-      const inner = document.querySelector(".chapter__wrapper");
-      const innerHeight = inner.offsetHeight;
-      const per = dom.scrollTop / (innerHeight - containerHeight);
-      setProgress(per);
-      setReadProgress(pageContext.book, pageContext.slug, per);
-    }
-  })
 
   return (
     <>
@@ -61,16 +44,6 @@ export default function Chapter({ data, pageContext }) {
               >
                   <Ellipsis></Ellipsis>
                 </span>
-                <span
-                  className="darkmode__toggler"
-                  onClick={() => set({darkMode: !data.darkMode})}
-              >
-                  {
-                    data.darkMode ?
-                    <Sun/> :
-                    <Moon/>
-                  }
-                </span>
               </div>
             )}
           </ContextConsumer>
@@ -78,11 +51,7 @@ export default function Chapter({ data, pageContext }) {
         <main className="chapter__wrapper" tabindex="-1" role="main">
           <div className="chapter__inner">
             <header className="chapter__header">
-              {
-                !isVolume && index > 0 && index < 100 &&
-                <div className="chapter__index">CHAPTER { index }</div>
-              }
-              <h1 class="chapter__title">{ title }</h1>
+              <h1 class="chapter__title">{ getTitle(title, index, isVolume) }</h1>
             </header>
             {
               isVolume && img &&
@@ -100,15 +69,6 @@ export default function Chapter({ data, pageContext }) {
             <Subscribe book={bookTitle} site={site}/>
           </div>
           <Footer site={site}></Footer>
-          <div className="read-progress">
-            <div
-              className="read-progress__inner"
-              style={{
-                width: progress * 100 + "%"
-              }}
-            >
-            </div>
-          </div>
         </main>
       </div>
     </>
@@ -119,9 +79,12 @@ export const Head = ({data}) => {
   const site = data.site.siteMetadata;
   const book = data.book;
   const post = data.markdownRemark;
+
+  const { title, index, img } = post.frontmatter;
+  const { prev, next, isVolume } = post.fields;
   return (
     <>
-      <title>{ post.frontmatter.title } - { book.summary.title } | { site.title }</title>
+      <title>{ getTitle(title, index, isVolume) } - { book.summary.title } | { site.title }</title>
     </>
   )
 }

@@ -10,18 +10,13 @@ import {
 import {
   Logo
 } from "../components/icons";
-import {
-  getLastReadChapter
-} from "../utils/reader";
 
 export default function({ data, pageContext }) {
   const book = data.markdownRemark;
   const site = data.site.siteMetadata;
-  //let next = book.fields.next;
+  let next = book.fields.next;
   const wordCount = data.book.summary.wordCount;
   const chapters = data.book.summary.chapters;
-
-  let next = getLastReadChapter(pageContext.book, chapters);
 
   return (
     <>
@@ -105,6 +100,10 @@ export const query = graphql`
       html,
       fields {
         slug
+        next {
+          slug
+          title
+        }
       }
       frontmatter {
         title

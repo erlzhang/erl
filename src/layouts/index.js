@@ -19,9 +19,6 @@ function ChapterLayout({ data, children }) {
               if (data.showSummary) {
                 _className += ' with-summary';
               }
-              if (data.darkMode) {
-                _className += ' dark-mode';
-              }
                return(<div className={_className} id="bookMain">
                 <Summary
                   summary={summary}

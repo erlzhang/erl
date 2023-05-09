@@ -16,7 +16,7 @@ function SiteInfo({ site }) {
   return (
     <>
       <h1>
-        <Link to="/about">{ site.title }</Link>
+        { site.title }
       </h1>
       <div className="archive__header_intro">
         { site.description }
