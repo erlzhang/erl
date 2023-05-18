@@ -191,15 +191,6 @@ exports.createPages = async ({ graphql, actions }) => {
       return;
     }
 
-    createPage({
-      path: summary.slug,
-      component: path.resolve(`./src/templates/book.js`),
-      context: {
-        slug: summary.slug,
-        book: node.name
-      }
-    });
-
     const chapters = [];
     flattenArray(summary.chapters, chapters);
     chapters.forEach(chapter => {
@@ -209,6 +200,7 @@ exports.createPages = async ({ graphql, actions }) => {
         context: {
           slug: chapter.slug,
           book: node.name,
+          bookSlug: summary.slug,
           layout: 'chapter'
         }
       });

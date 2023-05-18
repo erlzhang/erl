@@ -42,7 +42,7 @@ function ListItem({ item, onClick, current, className }) {
   )
 }
 
-export default function({ summary, current, handleClose }) {
+export default function({ summary, current, handleClose, content, children }) {
   const handleLinkClick = (e) => {
     const width = window.innerWidth;
     if (width > 1200) {
@@ -73,12 +73,21 @@ export default function({ summary, current, handleClose }) {
         <span className="close-summary" onClick={handleClose}>
           <Close></Close>
         </span>
+          <div className="header">
+            <h1>{ summary.title }</h1>
+            <div
+              className="summary__desc"
+              dangerouslySetInnerHTML={{ __html: content }}
+            />
+          </div>
         <nav role="navigation">
           <ul className="summary">
-            <ListItem onClick={handleLinkClick} item={summary} className="header"></ListItem>
             { posts }
           </ul>
         </nav>
+        <div className="summary__footer">
+          { children }
+        </div>
       </div>
     </>
   )

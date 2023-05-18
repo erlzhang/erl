@@ -134,10 +134,12 @@ function getPrevAndNextOfChapters(summary, result) {
   flatted.forEach(item => {
     item.title = formatTitle(item);
   });
+  /*
   flatted.unshift({
     slug: summary.slug,
     title: summary.title
   });
+  */
 
   for (let i = 0, l = flatted.length - 1; i < l; i++) {
     let current = flatted[i];

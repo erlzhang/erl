@@ -95,10 +95,11 @@ a, a:hover, a:visited, a:active {
 }
 .site-footer {
   line-height: 1.5rem;
-  padding: 1.25rem 0 0.75rem;
+  padding: 0.75rem 10px;
   color: var(--default);
+  border-top: 1px solid var(--border-color);
   font-size: 0.75rem;
-  text-align: center;
+  text-align: left;
   width: 100%;
   a {
     font-size: 0.75rem;

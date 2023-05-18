@@ -12,9 +12,7 @@
   width: calc(100% - 40px);
   z-index: 7;
   padding: 2rem 10px 10px;
-  /*
-  background-color: var(--bg-color);
-  */
+  background-color: transparent;
 }
 .with-summary .book-header {
   width: calc(100% - var(--summary-width) - 40px);
@@ -29,15 +27,11 @@
 .book-header h1 {
   margin: 0;
   font-size: 20px;
-  font-weight: 200;
+  font-weight: 400;
   text-align: center;
-  opacity: 0;
-  padding-left: 200px;
-  padding-right: 200px;
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin-top: 1.5rem;
+  display: none;
   @include transition(opacity ease 0.4s);
 }
 .book-header h1 a,
@@ -45,7 +39,15 @@
   color: inherit;
   text-decoration: none;
 }
+.book-header p {
+  font-size: 0.875rem;
+  color: var(--gray);
+  text-align: center;
+  margin-top: 15px;
+}
 .book-header-actions {
+  position: absolute;
+  top: 30px;
   span {
     color: var(--default);
     height: 30px;
@@ -79,6 +81,7 @@
 }
 */
 @media (max-width: 1000px) {
+  /*
   .book-header h1 {
     display: none;
   }
@@ -89,12 +92,23 @@
     padding-top: 15px;
     background-color: var(--bg-color);
   }
+  */
+  .book-header h1 {
+    display: block;
+  }
+  .book-header {
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding-top: 15px;
+    background-color: var(--bg-color);
+  }
+  .book-header-actions {
+    top: 15px;
+  }
 }
 .book-header h1 i {
   display: none;
-}
-.book-header:hover h1 {
-  opacity: 1;
 }
 /*SUMMARY*/
 .book__body {
@@ -114,6 +128,7 @@
   bottom: 0;
   overflow-y: auto;
   &::-webkit-scrollbar {
+    opacity: 1;
     width: 8px;
     height: 1px;
   }
@@ -193,6 +208,9 @@ a.navigation {
 .navigation.navigation-prev {
   left: 0;
 }
+.navi {
+  display: block;
+}
 .with-summary .navigation.navigation-prev {
   left: 300px;
 }
@@ -236,9 +254,15 @@ a.navigation {
   .mobile-navigation {
     height: 40px;
     margin-bottom: 30px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    display: block;
+    .navi {
+      line-height: 2rem;
+    }
+    .navi-title {
+      position: static;
+      opacity: 1;
+      font-size: 1rem;
+    }
     .navigation {
       position: static;
       top: auto;
