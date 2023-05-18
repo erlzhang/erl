@@ -1,4 +1,3 @@
-import { sumBy } from "lodash";
 export function getDate({ start, end }) {
   let str = "";
   if (start !== end) {
@@ -8,29 +7,6 @@ export function getDate({ start, end }) {
   return str;
 }
 
-export function getWordCount(nodes) {
-  return sumBy(nodes, (n) => n.fields.wordCount);
-}
-
-export function getWordCountOfBooks(nodes, books) {
-  const result = {
-  }
-
-  nodes.forEach(node => {
-    const { book, wordCount } = node.fields;
-    if (!book) {
-      return;
-    }
-
-    if (!result[book]) {
-      result[book] = 0;
-    }
-
-    result[book] += wordCount;
-  });
-
-  return result;
-}
 
 export function getAllCategories(books) {
   let categories = ["全部"];

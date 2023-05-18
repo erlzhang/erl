@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Footer from "../components/footer";
-import Header from "../components/header";
 import { graphql, Link } from "gatsby"
 import {
   getAllCategories,
@@ -74,9 +73,6 @@ export default function({ data }) {
 
   return (
     <div className="archive-container">
-      <Link to="/" className="logo">
-        <Logo/>
-      </Link>
       <main className="archive">
         <div
           className="archive__header"
@@ -106,7 +102,7 @@ export const Head = ({data}) => {
   const site = data.site.siteMetadata;
   return (
     <>
-      <title>归档 | { site.title }</title>
+      <title>{ site.title }</title>
     </>
   )
 }

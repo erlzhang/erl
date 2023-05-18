@@ -13,9 +13,6 @@
   z-index: 7;
   padding: 2rem 10px 10px;
   background-color: transparent;
-  /*
-  background-color: var(--bg-color);
-  */
 }
 .with-summary .book-header {
   width: calc(100% - var(--summary-width) - 40px);
@@ -58,38 +55,13 @@
   }
 }
 .summary__toggler {
-  /*
-  position: absolute;
-  top: 1.5rem;
-  left: 3rem;
-  width: 30px;
-  height: 30px;
-  z-index: 8;
-  */
   transition: transform 0.25s linear;
   transform-origin: center center;
 }
 .with-summary .summary__toggler {
   transform: rotate(90deg);
 }
-/*
-.summary__toggler.active {
-  transform: rotate(90deg);
-}
-*/
 @media (max-width: 1000px) {
-  /*
-  .book-header h1 {
-    display: none;
-  }
-  .book-header {
-    left: 0;
-    right: 0;
-    width: 100%;
-    padding-top: 15px;
-    background-color: var(--bg-color);
-  }
-  */
   .book-header h1 {
     display: block;
   }
@@ -250,43 +222,16 @@ a.navigation {
   .mobile-navigation {
     height: 40px;
     margin-bottom: 30px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    .navigation {
-      position: static;
-      top: auto;
-      width: 50%;
-      @include flex();
-      @include flex-row();
-      color: var(--primary);
-      justify-content: space-between;
-      .navi-title {
-        position: static;
-        display: block;
-        opacity: 1;
-        width: auto;
-        transform: none;
-        min-width: 0;
-        flex: 1;
-      }
-      svg {
-        flex-shrink: 0;
-      }
-    }
-    .navigation.navigation-prev {
-    }
-    .navigation.navigation-next {
-      flex-direction: row-reverse;
-    }
-    .navigation.navigation-unique {
-      max-width: 100%;
+    display: block;
+    .navi {
+      line-height: 2rem;
+      display: block;
       width: 100%;
     }
-    .navigation:hover {
-      .navi-title {
-        transform: none;
-      }
+    .navi-title {
+      position: static;
+      opacity: 1;
+      font-size: 1rem;
     }
   }
   .summary__toggler.active {
@@ -295,33 +240,10 @@ a.navigation {
 }
 
 @media screen and (max-width: 768px) {
-  /*
-  .book__wrapper.sidebar-right .logo, .book_wrapper.sidebar-right.logo {
-    left: 50%;
-    margin-left: -20px;
-  }
-  */
   .book-summary {
     z-index: 12;
   }
-  /*
-  .summary__toggler {
-    left: 1.5rem;
-    top: 2rem;
-    position: absolute;
-  }
-  */
 }
-/*
-@media screen and (max-width: 600px) {
-  .summary__toggler.active {
-    left: 45px;
-  }
-  .book-header {
-    right: auto;
-  }
-}
-*/
 .chapter__content {
   margin-bottom: 4.5rem;
 }
@@ -330,39 +252,6 @@ a.navigation {
   font-weight: 500;
   text-align: center;
   margin: 0 0 2.75rem;
-}
-.chapter__index {
-  font-size: 0.95rem;
-  text-align: center;
-  margin-bottom: 0.75rem;
-  color: var(--default);
-  position: relative;
-}
-.chapter__index:after {
-  /*
-  @include pseudo;
-  width: 20px;
-  height: 2px;
-  background-color: var(--grayer);
-  bottom: 0;
-  left: 50%;
-  margin-left: -10px;
-  */
-}
-.read-progress {
-  width: 100%;
-  height: 5px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: var(--border-color);
-}
-.read-progress__inner {
-  position: relative;
-  width: 0;
-  height: 100%;
-  background-color: var(--default);
 }
 .chapter__figure {
   max-width: 650px;

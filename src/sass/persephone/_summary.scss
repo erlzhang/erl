@@ -65,27 +65,6 @@
     line-height: 1.25rem;
   }
 }
-.book-summary ul.summary li.divider {
-  height: 1px;
-  margin: 7px 0;
-  overflow: hidden;
-  background: var(--border-color);
-}
-.book-summary ul.summary li i.fa-check {
-  display: none;
-  position: absolute;
-  right: 9px;
-  top: 16px;
-  font-size: 9px;
-  color: #33cc33;
-}
-.book-summary ul.summary li.done > a {
-  color: inherit;
-  font-weight: normal;
-}
-.book-summary ul.summary li.done > a i {
-  display: inline;
-}
 .book-summary ul.summary li a,
 .book-summary ul.summary li span {
   display: block;
@@ -113,11 +92,6 @@
   padding-left: 10px;
 }
 @media (max-width: 1240px) {
-  // .book-summary {
-  //   width: calc(100% - 60px);
-  //   bottom: 0;
-  //   left: -100%;
-  // }
   .book__wrapper.with-summary .book-summary {
     width: 100%;
     position: fixed;

@@ -4,11 +4,9 @@ import {
   Logo
 } from "../components/icons";
 import { graphql, Link } from "gatsby"
-import Header from "../components/header";
 import Footer from "../components/footer";
 import ContextConsumer from "../layouts/Context"
-import Subscribe from "../components/subscribe";
-import Navigation from "../components/navigation";
+import Navigation from "../components/navi";
 
 function getTitle(title, index, isVolume) {
   let str = "";
@@ -69,6 +67,7 @@ export default function Chapter({ data, pageContext }) {
             </div>
           </div>
         </main>
+        <Footer site={site}/>
       </div>
     </>
   )
