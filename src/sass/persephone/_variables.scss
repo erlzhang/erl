@@ -10,6 +10,25 @@
   --white: #fff;
   --blue: #007bff;
   --red: #dc3545;
-  --bg-color: var(--white);
+
   --content-width: 750px;
+  --summary-width: 300px;
+
+  --primary: var(--dark);
+  --text-color: var(--dark);
+  --secondary: var(--grayer);
+  --default: var(--gray);
+  --third: var(--gray-light);
+  --bg-color: var(--white);
+  --border-color: var(--light);
+  --hightlight: var(--blue);
+}
+
+.book__wrapper.dark-mode {
+  --text-color: var(--lightest);
+  --bg-color: var(--dark);
+  --border-color: var(--gray);
+  --default: var(--light);
+  --secondary: var(--lighter);
+  --third: var(--light-gray);
 }

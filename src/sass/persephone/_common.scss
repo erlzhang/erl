@@ -18,11 +18,7 @@ body {
 }
 .container {
   background-color: var(--bg-color);
-  color: var(--dark);
-}
-.container.dark-mode {
-  background-color: var(--dark);
-  color: var(--lighter);
+  color: var(--text-color);
 }
 main {
   flex: 1;
@@ -45,53 +41,6 @@ a, a:hover, a:visited, a:active {
   text-decoration: none;
   color: inherit;
 }
-.loading {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  z-index: 15;
-  background-color: var(--bg-color);
-  align-items: center;
-  justify-content: center;
-}
-.loading__icon {
-  width: 60px;
-  height: 60px;
-  position: relative;
-  border-radius: 30px;
-  border: 2px solid var(--gray-light);
-}
-.loading__icon:after {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  bottom: -2px;
-  right: -2px;
-  border-radius: 30px;
-  border: 2px solid transparent;
-  border-top-color: var(--gray);
-  animation: spin 1s linear infinite;
-}
-.error-container {
-	display: flex;
-	width: 100vw;
-	height: 100vh;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-}
-.error-title {
-	font-size: 3.5rem;
-}
-.error-hint {
-	margin: 3rem 0;
-	font-size: 1.35rem;
-}
-.error-link {
-	text-decoration: underline;
-}
 .clearfix:after {
   content: "";
   clear: both;
@@ -100,7 +49,7 @@ a, a:hover, a:visited, a:active {
 .site-footer {
   line-height: 1.5rem;
   padding: 1.25rem 0 0.75rem;
-  color: var(--gray);
+  color: var(--default);
   font-size: 0.75rem;
   text-align: center;
   width: 100%;
@@ -108,10 +57,4 @@ a, a:hover, a:visited, a:active {
     font-size: 0.75rem;
     margin: 0 3px;
   }
-}
-.dark-btn {
-  position: absolute;
-  right: 3rem;
-  top: 3rem;
-  z-index: 5555;
 }

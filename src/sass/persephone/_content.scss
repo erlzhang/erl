@@ -67,10 +67,10 @@
 .content a {
   text-decoration: none;
   background: transparent;
-  border-bottom: 1px dashed var(--gray);
+  border-bottom: 1px dashed var(--default);
   margin: 0 0.25rem;
   font-size: 0.9em;
-  color: var(--grayer);
+  color: var(--secondary);
 }
 .content a:hover,
 .content a:focus,
@@ -108,11 +108,6 @@
   margin-top: 1.275em;
   margin-bottom: 0.85em;
   font-weight: 550;
-}
-.content h1 {
-  font-size: 2.3em;
-  font-weight: 500;
-  margin-bottom: 1em;
 }
 .content h2 {
   font-size: 1.75em;
@@ -216,10 +211,6 @@
 }
 .content ol ol {
   list-style-type: lower-roman;
-}
-.content h1 {
-  text-align: center;
-  margin-bottom: 2.75rem;
 }
 .content blockquote {
   margin: 0;

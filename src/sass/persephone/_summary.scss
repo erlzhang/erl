@@ -6,9 +6,8 @@
   z-index: 1;
   overflow-y: auto;
   width: 300px;
-  color: var(--grayer);
-  // background: var(--white);
-  border-right: 1px solid rgba(0, 0, 0, 0.07);
+  color: var(--secondary);
+  border-right: 1px solid var(--border-color);
   -webkit-transition: left 250ms ease;
   -moz-transition: left 250ms ease;
   -o-transition: left 250ms ease;
@@ -28,10 +27,6 @@
 .close-summary {
   display: none;
 }
-.dark-mode .book-summary {
-  color: var(--light-gray);
-  border-color: var(--grayer);
-}
 .book-summary ul.summary {
   list-style: none;
   margin: 0;
@@ -41,44 +36,39 @@
   -o-transition: top 0.5s ease;
   transition: top 0.5s ease;
   font-size: 16px;
+  padding: 0 0 20px;
 }
 .book-summary ul.summary li {
   list-style: none;
+  &.volume > a {
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 0.85rem;
+  }
 }
-.book-summary ul.summary li.header {
-  padding: 10px 15px;
+.book-summary .header {
+  padding: 10px 15px 20px;
   padding-top: 20px;
   text-transform: uppercase;
-  color: var(--gray);
-}
-.book-summary ul.summary li.divider {
-  height: 1px;
-  margin: 7px 0;
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.07);
-}
-.dark-mode .book-summary ul.summary li.divider {
-  background-color: var(--grayer);
-}
-.book-summary ul.summary li i.fa-check {
-  display: none;
-  position: absolute;
-  right: 9px;
-  top: 16px;
-  font-size: 9px;
-  color: #33cc33;
-}
-.book-summary ul.summary li.done > a {
-  color: inherit;
-  font-weight: normal;
-}
-.book-summary ul.summary li.done > a i {
-  display: inline;
+  color: var(--default);
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 7px;
+  .summary__desc {
+    margin-top: 15px;
+  }
+  h1 {
+    font-size: 1rem;
+    color: var(--text-color)
+  }
+  p {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+  }
 }
 .book-summary ul.summary li a,
 .book-summary ul.summary li span {
   display: block;
-  padding: 10px 15px;
+  padding: 8px 15px;
   border-bottom: none;
   color: inherit;
   background: transparent;
@@ -94,23 +84,18 @@
   outline: none;
 }
 .book-summary ul.summary li.active > a {
-  color: var(--blue);
+  color: var(--hightlight);
   background: transparent;
   text-decoration: none;
 }
 .book-summary ul.summary li ul {
-  padding-left: 20px;
+  padding-left: 10px;
 }
 @media (max-width: 1240px) {
-  // .book-summary {
-  //   width: calc(100% - 60px);
-  //   bottom: 0;
-  //   left: -100%;
-  // }
   .book__wrapper.with-summary .book-summary {
     width: 100%;
     position: fixed;
-    background-color: white;
+    background-color: var(--bg-color);
     height: 100%;
     z-index: 55555;
   }
@@ -124,5 +109,21 @@
     text-align: center;
     height: 40px;
     padding-top: 10px;
+  }
+}
+.summary__footer {
+  border-top: 1px solid var(--border-color);
+  padding: 10px;
+  h4 {
+    font-size: 0.85rem;
+    line-height: 1.75rem;
+  }
+  p {
+    font-size: 0.75rem;
+    line-height: 1.15rem;
+  }
+  .icon__list {
+    text-align: left;
+    margin: 1rem 0 1.5rem;
   }
 }

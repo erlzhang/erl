@@ -19,7 +19,21 @@ class ContextProviderComponent extends React.Component {
     this.state = {
       ...defaultContextValue,
       set: this.setData,
+      inited: false
     }
+  }
+
+  componentDidMount() {
+    if (this.state.inited) {
+      return;
+    }
+
+    if (window.innerWidth > 800) {
+      this.setData({
+        showSummary: true
+      });
+    }
+    this.setState({ inited: true });
   }
 
   setData(newData) {

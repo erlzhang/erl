@@ -1,48 +1,25 @@
-.body-archive {
-  overflow-x: hidden;
+.archive-container {
+  width: 100%;
 }
 .archive {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  .site-footer {
-    position: fixed;
-    width: 35%;
-    left: 0;
-    bottom: 0;
-    z-index: 2;
-  }
+  width: 100%;
+  max-width: 620px;
+  margin: 3rem auto 0;
+  padding: 1.5rem 1rem;
 }
 .archive__header {
-  width: 35%;
-  height: 100%;
-  border-right: 1px solid var(--lighter);
-  text-align: center;
-  justify-content: center;
-  position: fixed;
-  left: 0;
-  top: 0;
   z-index: 1;
-  transition: all 0.35s ease-in-out;
-  @include flex();
-  @include flex-middle();
-  @include flex-column();
-  &.with-cover {
-    z-index: 100;
-  }
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.235rem;
     margin-bottom: 0.75rem;
     a:hover {
       text-decoration: underline;
     }
   }
   .archive__header_intro {
-    width: 70%;
-    max-width: 345px;
-    margin: 0 0 1.5rem;
-    color: var(--grayer);
+    color: var(--secondary);
     font-size: 0.875rem;
+    margin-bottom: 1rem;
   }
   .archive__header_cover {
     position: relative;
@@ -52,10 +29,7 @@
   }
 }
 .archive__content {
-  width: 65%;
-  height: 100%;
-  margin-left: 35%;
-  overflow-y: auto;
+  width: 100%;
 }
 .archive__list {
   width: 100%;
@@ -67,15 +41,10 @@
 }
 .archive__item {
   list-style: none;
-  padding: 0.75rem 5.35rem;
-  border-top: 1px solid transparent;
-  border-bottom: 1px solid transparent;
+  padding: 0.75rem 0;
   width: 100%;
   overflow: hidden;
   transition: all 0.25s ease-in-out;
-  &:hover {
-    border-color: var(--lighter);
-  }
   &.fade a, &.fade .archive__time {
     color: var(--light-gray);
   }
@@ -87,8 +56,8 @@
   color: var(--dark);
   width: 100%;
   height: 100%;
-  font-size: 18px;
-  line-height: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.35rem;
   @include flex()
 }
 .archive__time {
@@ -116,7 +85,7 @@
 }
 .archive__tags {
   transition: all 0.25s ease-in-out;
-  padding: 0.75rem 5.35rem;
+  padding: 0.75rem 0;
   margin-bottom: 1.5rem;
 }
 .archive__tag {
@@ -141,10 +110,9 @@
 .archive__bottom {
   text-align: right;
   margin-top: 20px;
-  padding-right: 5.35rem;
 }
 .icon__list {
-  text-align: center;
+  text-align: left;
   margin: 0 0 1.5rem;
 }
 .icon__link svg {
@@ -164,35 +132,7 @@
 .icon__list a:hover .icon__stroke {
   stroke: var(--dark);
 }
-@media screen and (max-width: 800px) {
-  .archive {
-    @include flex-column();
-    min-height: 100%;
-    height: auto;
-    .site-footer {
-      position: static;
-      width: 100%;
-    }
-  }
-  .archive__header, .archive__content {
-    width: 100%;
-    height: auto;
-    margin: 0;
-  }
-  .archive__header {
-    padding: 5rem 0 0;
-    position: static;
-  }
-  .archive__list {
-    height: auto;
-  }
-}
 @media screen and (max-width: 600px) {
-  .archive__item,
-  .archive__tags,
-  .archive__bottom {
-    padding: 0.75rem 2rem;
-  }
   .archive__time {
     width: 100px;
     flex-basis: 100px;
@@ -201,8 +141,4 @@
   .archive__item .archive__tag {
     display: none;
   }
-}
-.page__content {
-	max-width: 800px;
-	padding: 2rem 3rem!important;
 }

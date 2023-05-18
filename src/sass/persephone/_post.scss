@@ -107,19 +107,19 @@
   margin: 0;
   padding: 1.5rem 0;
   position: relative;
-  color: var(--gray);
+  color: var(--default);
   width: 100%;
   text-align: left;
   &:before {
     @include pseudo();
     left: 0;
-    background-color: var(--light);
+    background-color: var(--border-color);
     width: 30%;
     height: 1px;
     top: 0;
   }
   h4 {
-    color: var(--grayer);
+    color: var(--secondary);
     font-size: 1.15rem;
     font-weight: 400;
 		margin-bottom: 0.75rem;
@@ -148,7 +148,7 @@
     border-bottom: none;
     position: relative;
     &:hover {
-      color: var(--dark);
+      color: var(--text-color);
     }
     &:after {
       @include pseudo();
@@ -177,7 +177,7 @@
   &:before {
     @include pseudo();
     left: 0;
-    background-color: var(--light);
+    background-color: var(--border-color);
     width: 30%;
     height: 1px;
     top: 0;
