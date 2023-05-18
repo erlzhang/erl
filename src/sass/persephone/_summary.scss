@@ -46,13 +46,24 @@
     font-size: 0.85rem;
   }
 }
-.book-summary ul.summary li.header {
-  padding: 10px 15px;
+.book-summary .header {
+  padding: 10px 15px 20px;
   padding-top: 20px;
   text-transform: uppercase;
   color: var(--default);
   border-bottom: 1px solid var(--border-color);
   margin-bottom: 7px;
+  .summary__desc {
+    margin-top: 15px;
+  }
+  h1 {
+    font-size: 1rem;
+    color: var(--text-color)
+  }
+  p {
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+  }
 }
 .book-summary ul.summary li.divider {
   height: 1px;
@@ -124,5 +135,21 @@
     text-align: center;
     height: 40px;
     padding-top: 10px;
+  }
+}
+.summary__footer {
+  border-top: 1px solid var(--border-color);
+  padding: 10px;
+  h4 {
+    font-size: 0.85rem;
+    line-height: 1.75rem;
+  }
+  p {
+    font-size: 0.75rem;
+    line-height: 1.15rem;
+  }
+  .icon__list {
+    text-align: left;
+    margin: 1rem 0 1.5rem;
   }
 }

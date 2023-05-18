@@ -5,11 +5,15 @@ import { Link } from "gatsby";
 export default function({ site }) {
   return (
     <>
-      <aside className="post__contact">
-        <Link to="/about/"><h4>{ site.title}</h4></Link>
-        <p>{ site.description }</p>
+        <h4>关于作者</h4>
+        {
+          site.about.split('\n').map(line => {
+            return (
+              <p>{ line }</p>
+            )
+          })
+        }
         <Social site={site}></Social>
-      </aside>
     </>
   );
 }

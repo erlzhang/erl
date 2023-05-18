@@ -209,6 +209,7 @@ exports.createPages = async ({ graphql, actions }) => {
         context: {
           slug: chapter.slug,
           book: node.name,
+          bookSlug: summary.slug,
           layout: 'chapter'
         }
       });

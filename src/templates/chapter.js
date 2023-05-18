@@ -32,9 +32,10 @@ export default function Chapter({ data, pageContext }) {
     <>
       <div className="body__inner">
         <div className="book-header" role="navigation">
-          <Link to="/archive" className="logo">
+          <Link to="/" className="logo">
             <Logo/>
           </Link>
+          <h1 className="book-title">《{ bookTitle }》</h1>
           <ContextConsumer>
             {({ data, set }) => (
               <div className="book-header-actions">
@@ -66,9 +67,7 @@ export default function Chapter({ data, pageContext }) {
             <div className="mobile-navigation">
               <Navigation prev={prev} next={next}></Navigation>
             </div>
-            <Subscribe book={bookTitle} site={site}/>
           </div>
-          <Footer site={site}></Footer>
         </main>
       </div>
     </>
@@ -90,13 +89,15 @@ export const Head = ({data}) => {
 }
 
 export const query = graphql`
-  query($slug: String!, $book: String!) {
+  query($slug: String!, $book: String!, $bookSlug: String!) {
     site {
       siteMetadata {
         title
         imgPrefix
         logo
         email
+        about
+        github
       }
     }
     markdownRemark(fields: {slug: {eq: $slug}}) {
@@ -134,5 +135,8 @@ export const query = graphql`
     }
     name
   }
+   bookContent: markdownRemark(fields: {slug: {eq: $bookSlug}}) {
+    html
+    }
   }
 `
