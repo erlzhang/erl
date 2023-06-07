@@ -51,5 +51,14 @@ module.exports = {
       __key: "pages",
     },
     require.resolve(`./plugins/source-books`),
+     {
+    resolve: `gatsby-plugin-baidu-tongji`,
+    options: {
+			// 百度统计站点ID
+      siteid: "3176e6e675ed7773f831e38c7a57880f",
+      // 配置统计脚本插入位置，默认值为 false, 表示插入到 body 中, 为 true 时插入脚本到 head 中
+      head: false,
+    },
+  },
   ],
 };
