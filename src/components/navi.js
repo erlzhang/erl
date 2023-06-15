@@ -1,6 +1,5 @@
 import React from "react";
-//import { Link } from "gatsby";
-import Link from "gatsby-plugin-transition-link";
+import { Link } from "gatsby";
 import { onEnterChapter } from "../utils/transitions/chapter";
 
 export default function({ prev, next }) {

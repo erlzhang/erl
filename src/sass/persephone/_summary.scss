@@ -1,7 +1,8 @@
 .book-summary {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
+  height: 100vh;
   left: -300px;
   z-index: 1;
   overflow-y: auto;
