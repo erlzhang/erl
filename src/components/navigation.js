@@ -3,7 +3,6 @@ import { Link } from "gatsby";
 import {
   Left, Right
 } from "../components/icons";
-import { onEnterChapter } from "../utils/transitions/chapter";
 
 export default function({ prev, next }) {
   return (
@@ -14,7 +13,6 @@ export default function({ prev, next }) {
           to={prev.slug}
           className={'navigation navigation-prev'}
           aria-label={`上一章: ${ prev.title }`}
-          entry={onEnterChapter}
         >
           <Left></Left>
           <span className="navi-title">{ prev.title }</span>
@@ -26,7 +24,6 @@ export default function({ prev, next }) {
           to={next.slug}
           className="navigation navigation-next"
           aria-label={`下一章: ${ next.title }`}
-          entry={onEnterChapter}
         >
           <Right></Right>
           <span className="navi-title">{ next.title }</span>

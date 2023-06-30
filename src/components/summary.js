@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
 import { Close } from "./icons";
-import { onEnterChapter } from "../utils/transitions/chapter";
 
 function ListItem({ item, onClick, current, className }) {
   const children = item.children && item.children.map(sub => {
@@ -30,7 +29,6 @@ function ListItem({ item, onClick, current, className }) {
         title={item.title}
         onClick={onClick}
         to={item.slug}
-        entry={onEnterChapter}
       >{ item.title }</Link>
       {
         children && children.length > 0 &&
