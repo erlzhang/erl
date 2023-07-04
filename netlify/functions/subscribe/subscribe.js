@@ -2,6 +2,8 @@
 
 const formData = require('form-data');
 const Mailgun = require('mailgun.js');
+//const fetch = require('node-fetch')
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 const mailgun = new Mailgun(formData);
 
@@ -23,6 +25,24 @@ const handler = async (event) => {
       subscribed: 'yes', // optional, modifiable on website
       upsert: 'yes', // optional, choose yes to insert if not exist, or update it exist
     });
+
+    await fetch(
+  `${process.env.URL}/.netlify/functions/emails/subscribed`,
+  {
+    headers: {
+      "netlify-emails-secret": process.env.NETLIFY_EMAILS_SECRET,
+    },
+    method: "POST",
+    body: JSON.stringify({
+      from: "Erl <erl@mail.erl.im>",
+      to: "zhangshiyu1992@hotmail.com",
+      subject: "您有新的订阅信息",
+      parameters: {
+        email: email
+      },
+    }),
+  }
+);
     return {
       statusCode: 200
     }

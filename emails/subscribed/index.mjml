@@ -1,0 +1,16 @@
+<mjml>
+  <mj-meta>
+    <mj-raw>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </mj-raw>
+  </mj-meta>
+  <mj-body>
+    <mj-section padding-top="30px">
+      <mj-column width="100%">
+        <mj-text>
+          <p style="font-size: 18px;">新的订阅：{{email}}</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
