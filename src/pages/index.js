@@ -7,6 +7,7 @@ import {
   formatNum
 } from "../utils/book";
 import Social from "../components/social";
+import Subscribe from "../components/subscribe";
 import {
   Logo
 } from "../components/icons";
@@ -92,6 +93,7 @@ export default function({ data }) {
             </div>
           </div>
         </div>
+        <Subscribe></Subscribe>
         <Footer site={site}></Footer>
       </main>
     </div>

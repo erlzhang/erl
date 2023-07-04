@@ -5,7 +5,7 @@
   width: 100%;
   max-width: 620px;
   margin: 3rem auto 0;
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 1rem 0;
 }
 .archive__header {
   z-index: 1;
@@ -33,11 +33,7 @@
 }
 .archive__list {
   width: 100%;
-  padding: 3.5rem 0 2.5rem;
-//   flex: 1;
-//   @include flex();
-//   @include flex-column();
-//   justify-content: start;
+  padding: 1.5rem 0;
 }
 .archive__item {
   list-style: none;

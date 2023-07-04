@@ -58,3 +58,50 @@ a, a:hover, a:visited, a:active {
     margin: 0 3px;
   }
 }
+.subscribe__form {
+  max-width: 400px;
+  width: 100%;
+  display: block;
+  position: relative;
+  // margin-bottom: 30px;
+  margin: 1.75rem auto;
+  input {
+    height: 46px;
+    width: 100%;
+    border: 1px solid var(--light);
+    border-radius: 6px;
+    padding: 8px 115px 8px 15px;
+    font-size: 14px;
+    color: var(--grayer);
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    width: 100px;
+    text-align: center;
+    line-height: 46px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: var(--grayer);
+    font-size: 14px;
+    // border-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    cursor: pointer;
+    background-color: var(--light);
+  }
+}
+.form-state-msg {
+  margin-top: -20px;
+  text-align: center;
+  font-size: 0.85rem;
+
+  &.state-success {
+    color: rgba(68, 131, 97, 1);
+  }
+  &.state-error {
+    color: rgba(212, 76, 71, 1);
+  }
+}
