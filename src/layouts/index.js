@@ -26,7 +26,6 @@ function ChapterLayout({ data, children }) {
                 <Summary
                   summary={summary}
                   content={bookContent}
-                  current={post.fields.slug}
                   handleClose={() => set({showSummary: false})}
                 >
                   <Contact site={site}/>

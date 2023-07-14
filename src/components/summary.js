@@ -2,14 +2,13 @@ import React from "react";
 import { Link } from "gatsby";
 import { Close } from "./icons";
 
-function ListItem({ item, onClick, current, className }) {
+function ListItem({ item, onClick, className }) {
   const children = item.children && item.children.map(sub => {
     return (
       <ListItem
         onClick={onClick}
         key={sub.slug}
         item={sub}
-        current={current}
       ></ListItem>
     )
   })
@@ -20,15 +19,13 @@ function ListItem({ item, onClick, current, className }) {
   if (className) {
     _className += " " + className;
   }
-  if (item.slug === current) {
-    _className += " active";
-  }
   return (
     <li className={_className}>
       <Link
         title={item.title}
         onClick={onClick}
         to={item.slug}
+        activeStyle={{ color: "var(--blue)" }}
       >{ item.title }</Link>
       {
         children && children.length > 0 &&
@@ -40,7 +37,7 @@ function ListItem({ item, onClick, current, className }) {
   )
 }
 
-export default function({ summary, current, handleClose, content, children }) {
+export default function({ summary, handleClose, content, children }) {
   const handleLinkClick = (e) => {
     const width = window.innerWidth;
     if (width > 1200) {
@@ -60,7 +57,6 @@ export default function({ summary, current, handleClose, content, children }) {
         onClick={handleLinkClick}
         key={post.slug}
         item={post}
-        current={current}
       ></ListItem>
     )
   })
