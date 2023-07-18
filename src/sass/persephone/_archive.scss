@@ -10,8 +10,9 @@
 .archive__header {
   z-index: 1;
   h1 {
-    font-size: 1.235rem;
+    font-size: 1.5rem;
     margin-bottom: 0.75rem;
+    font-weight: 500;
     a:hover {
       text-decoration: underline;
     }
@@ -82,7 +83,7 @@
 .archive__tags {
   transition: all 0.25s ease-in-out;
   padding: 0.75rem 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 .archive__tag {
   font-size: 12px;
