@@ -18,11 +18,10 @@
   width: calc(100% - var(--summary-width) - 40px);
 }
 .book-header .logo {
-  position: relative;
+  position: absolute;
   float: right;
-  top: 0;
-  right: 0;
-  left: auto;
+  top: 15px;
+  right: 10px;
 }
 .book-header h1 {
   margin: 0;
