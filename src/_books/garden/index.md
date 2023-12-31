@@ -2,8 +2,8 @@
 title: 我的秘密花园
 start: 2018
 end: 2020
-img: "/img/home/garden.jpg"
 category: 随笔
+index: 6
 ---
 
 情绪构建出一片自我的领域

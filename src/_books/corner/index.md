@@ -2,8 +2,7 @@
 title: 墙角
 start: 2016
 end: 2018
-open: true
-img: /img/home/corner.jpg
+index: 1
 category: 小说
 ---
 

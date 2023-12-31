@@ -2,8 +2,8 @@
 title: 爵士与蓝调
 start: 2020
 end: 2021
-img: "/img/home/blue.jpg"
 category: 小说
+index: 7
 ---
 
 沉默在烛光中摇摆

@@ -7,10 +7,6 @@ import {
   formatNum
 } from "../utils/book";
 import Social from "../components/social";
-import Subscribe from "../components/subscribe";
-import {
-  Logo
-} from "../components/icons";
 
 function SiteInfo({ site }) {
   return (
@@ -93,7 +89,7 @@ export default function({ data }) {
             </div>
           </div>
         </div>
-        <Subscribe></Subscribe>
+        {/* <Subscribe></Subscribe> */}
         <Footer site={site}></Footer>
       </main>
     </div>
@@ -121,7 +117,7 @@ export const query = graphql`
         logo
       }
     }
-    allBook(sort: {fields: [summary___end,summary___start], order: [DESC,DESC]}) {
+    allBook(sort: {fields: summary___index, order: DESC}) {
     nodes {
       summary {
         slug
@@ -130,6 +126,7 @@ export const query = graphql`
         start
         end
         category
+        index
         chapters {
           slug
         }

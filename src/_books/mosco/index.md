@@ -2,8 +2,8 @@
 title: 莫斯科与扶余
 start: 2020
 end: 2020
-img: "/img/home/mosco.jpg"
 category: 小说
+index: 5
 ---
 
 梦的一端是两万公里外的莫斯科
