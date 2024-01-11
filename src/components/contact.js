@@ -1,6 +1,5 @@
 import React from "react";
 import Social from "../components/social";
-import { Link } from "gatsby";
 
 export default function({ site }) {
   return (
