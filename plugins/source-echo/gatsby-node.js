@@ -35,56 +35,38 @@ exports.sourceNodes = async ({
   const { createNode, createNodeField } = actions
   // 先测试一本书
   const books = await getBooks()
-  books.forEach(async book => {
+  return Promise.allSettled(books.map(book => {
     book.category = book.category === 1 ? '小说' : '随笔';
-    const chapters = await getChapters(book.slug)
-    setPathOfChapter(chapters)
-    setPrevAndNextOfChapters(chapters)
+    return getChapters(book.slug)
+    .then(chapters => {
+      setPathOfChapter(chapters)
+      setPrevAndNextOfChapters(chapters)
 
-    createNode({
-      ...book,
-      name: book.slug,
-      summary: getSummaryOfChapters(chapters),
-      id: createNodeId(`book-${book.slug}`),
-      internal: {
-        type: 'book',
-        content: JSON.stringify(book),
-        contentDigest: createContentDigest(book),
-      },
-    });
-
-    chapters.forEach(async chapter => {
-      // chapter.content = post;
       createNode({
-        ...chapter,
-        id: createNodeId(`chapter-${chapter.id}`),
+        ...book,
+        name: book.slug,
+        summary: getSummaryOfChapters(chapters),
+        id: createNodeId(`book-${book.slug}`),
         internal: {
-          type: 'chapter',
-          content: JSON.stringify(chapter),
-          contentDigest: createContentDigest(chapter),
-        }
+          type: 'book',
+          content: JSON.stringify(book),
+          contentDigest: createContentDigest(book),
+        },
+      });
+
+      chapters.forEach(async chapter => {
+        createNode({
+          ...chapter,
+          id: createNodeId(`chapter-${chapter.id}`),
+          internal: {
+            type: 'chapter',
+            content: JSON.stringify(chapter),
+            contentDigest: createContentDigest(chapter),
+          }
+        })
       })
     })
-  });
-  // const chapters = await getChapters('window')
-  // setPathOfChapter(chapters);
-  // setPrevAndNextOfChapters(chapters);
-
-  // chapters.forEach(chapter => {
-  //   createNode({
-  //     ...chapter,
-  //     id: createNodeId(`chapter-${chapter.name}`),
-  //     internal: {
-  //       type: NODE_TYPE,
-  //       content: JSON.stringify(chapter),
-  //       contentDigest: createContentDigest(chapter),
-  //     },
-  //   })
-  // })
-}
-
-exports.onCreateNode = ({ node, getNode, actions, getNodesByType }) => {
-  const { createNodeField } = actions
+  }))
 }
 
 exports.createPages = async ({ graphql, actions }) => {
