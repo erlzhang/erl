@@ -4,7 +4,7 @@ require("dotenv").config({
 })
 
 axios.interceptors.request.use(config => {
-  config.headers['Authentication'] = process.env.NEXT_PUBLIC_API_KEY;
+  config.headers['Authentication'] = `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`;
   return config;
 })
 
