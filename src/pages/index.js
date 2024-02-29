@@ -117,7 +117,7 @@ export const query = graphql`
         logo
       }
     }
-    allBook(sort: {fields: index, order: DESC}) {
+    allBook(sort: {fields: [end,start], order: [DESC,DESC]}) {
     nodes {
       slug
       wordCount
@@ -125,7 +125,6 @@ export const query = graphql`
       start
       end
       category
-      index
       summary {
         slug
       }
