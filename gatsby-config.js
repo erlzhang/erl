@@ -11,44 +11,12 @@ module.exports = {
   },
   plugins: [
     "gatsby-plugin-sass",
-    // `gatsby-plugin-layout`,
     {
       resolve: "gatsby-plugin-transition-link",
       options: {
           layout: require.resolve(`./src/layouts/index.js`)
         }
     },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "books",
-        path: "./src/_books/",
-      },
-      __key: "books",
-    },
-    "gatsby-transformer-remark",
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-        {
-          resolve: "gatsby-remark-external-links",
-          options: {
-            target: "_blank",
-            rel: "nofollow"
-          }
-        }
-        ]
-      }
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "pages",
-        path: "./src/_pages/",
-      },
-      __key: "pages",
-    },
-    require.resolve(`./plugins/source-books`)
+    require.resolve(`./plugins/source-echo`)
   ],
 };

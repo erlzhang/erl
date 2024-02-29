@@ -8,23 +8,12 @@ import Footer from "../components/footer";
 import ContextConsumer from "../layouts/Context"
 import Navigation from "../components/navi";
 
-function getTitle(title, index, isVolume) {
-  let str = "";
-  if (!isVolume && index > 0 && index < 100) {
-    str += index + ". ";
-  }
-  str += title;
-  return str;
-}
-
-export default function Chapter({ data, pageContext }) {
-  const post = data.markdownRemark;
+export default function Chapter({ data }) {
+  const post = data.chapter;
   const site = data.site.siteMetadata;
-  const summary = data.book.summary.chapters;
-  const bookTitle = data.book.summary.title;
+  const bookTitle = data.book.title;
 
-  const { title, index, img } = post.frontmatter;
-  const { prev, next, isVolume } = post.fields;
+  const { title, prev, next } = post;
 
   return (
     <>
@@ -50,17 +39,11 @@ export default function Chapter({ data, pageContext }) {
         <main className="chapter__wrapper" tabindex="-1" role="main">
           <div className="chapter__inner">
             <header className="chapter__header">
-              <h1 class="chapter__title">{ getTitle(title, index, isVolume) }</h1>
+              <h1 class="chapter__title">{ title }</h1>
             </header>
-            {
-              isVolume && img &&
-              <figure className="chapter__figure">
-                <img src={site.imgPrefix + img} alt={title}/>
-              </figure>
-            }
             <article
               className="chapter__content content"
-              dangerouslySetInnerHTML={{ __html: post.html.replaceAll('/img/', site.imgPrefix+'/img/') }}
+              dangerouslySetInnerHTML={{ __html: post.content }}
             />
             <div className="mobile-navigation">
               <Navigation prev={prev} next={next}></Navigation>
@@ -76,19 +59,18 @@ export default function Chapter({ data, pageContext }) {
 export const Head = ({data}) => {
   const site = data.site.siteMetadata;
   const book = data.book;
-  const post = data.markdownRemark;
+  const post = data.chapter;
 
-  const { title, index, img } = post.frontmatter;
-  const { prev, next, isVolume } = post.fields;
+  const { title } = post;
   return (
     <>
-      <title>{ getTitle(title, index, isVolume) } - { book.summary.title } | { site.title }</title>
+      <title>{ title } - { book.title } | { site.title }</title>
     </>
   )
 }
 
 export const query = graphql`
-  query($slug: String!, $book: String!, $bookSlug: String!) {
+  query($slug: String!, $book: String!) {
     site {
       siteMetadata {
         title
@@ -99,43 +81,31 @@ export const query = graphql`
         github
       }
     }
-    markdownRemark(fields: {slug: {eq: $slug}}) {
-    fields {
-      next {
-        title
-        slug
-      }
+    chapter(slug: {eq: $slug}) {
+      title
+      slug
       prev {
         slug
         title
       }
-      slug
-      isVolume
-    }
-    frontmatter {
-      title
-      index
-      img
-    }
-    html
-  }
-  book(name: {eq: $book}) {
-    summary {
-      chapters {
-        title
+      content
+      next {
         slug
+        title
+      }
+    }
+    book(name: {eq: $book}) {
+      summary {
         children {
-          title
           slug
+          title
         }
+        slug
+        title
       }
       title
-      slug
-    }
-    name
-  }
-   bookContent: markdownRemark(fields: {slug: {eq: $bookSlug}}) {
-    html
+      name
+      content
     }
   }
 `

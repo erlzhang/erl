@@ -11,7 +11,7 @@ export function getDate({ start, end }) {
 export function getAllCategories(books) {
   let categories = ["全部"];
   books.forEach(book => {
-    const category = book.summary.category;
+    const category = book.category;
     if (!categories.includes(category)) {
       categories.push(category);
     }

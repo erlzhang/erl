@@ -7,11 +7,10 @@ import ContextConsumer, { ContextProviderComponent }  from "./Context"
 
 function ChapterLayout({ data, children }) {
     const site = data.site.siteMetadata;
-    const post = data.markdownRemark;
-    const prev = post.fields.prev;
-    const next = post.fields.next;
-    const summary = data.book.summary;
-    const bookContent = data.bookContent.html;
+    const post = data.chapter;
+    const prev = post.prev;
+    const next = post.next;
+    const book = data.book;
 
     return (
       <>
@@ -24,8 +23,7 @@ function ChapterLayout({ data, children }) {
               }
                return(<div className={_className} id="bookMain">
                 <Summary
-                  summary={summary}
-                  content={bookContent}
+                  book={book}
                   handleClose={() => set({showSummary: false})}
                 >
                   <Contact site={site}/>

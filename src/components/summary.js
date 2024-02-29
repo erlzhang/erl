@@ -37,7 +37,7 @@ function ListItem({ item, onClick, className }) {
   )
 }
 
-export default function({ summary, handleClose, content, children }) {
+export default function({ book, handleClose, content, children }) {
   const handleLinkClick = (e) => {
     const width = window.innerWidth;
     if (width > 1200) {
@@ -49,7 +49,7 @@ export default function({ summary, handleClose, content, children }) {
     }, 300);
   }
 
-  const chapters = summary.chapters;
+  const chapters = book.summary;
 
   const posts = chapters.map(post => {
     return (
@@ -68,11 +68,16 @@ export default function({ summary, handleClose, content, children }) {
           <Close></Close>
         </span>
           <div className="header">
-            <h1>{ summary.title }</h1>
-            <div
-              className="summary__desc"
-              dangerouslySetInnerHTML={{ __html: content }}
-            />
+            <h1>{ book.title }</h1>
+            <div className="summary__desc">
+              {
+                book.content.split('\n').map(line => {
+                  return (
+                    <p>{ line }</p>
+                  )
+                })
+              }
+            </div>
           </div>
         <nav role="navigation">
           <ul className="summary">

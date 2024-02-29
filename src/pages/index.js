@@ -30,18 +30,18 @@ export default function({ data }) {
   const [hovered, setHovered] = useState(false);
   const [filtered, setFiltered] = useState(categories[0]);
 
-  const items = books.filter(book => filtered == "全部" || filtered === book.summary.category).map((book) => {
+  const items = books.filter(book => filtered == "全部" || filtered === book.category).map((book) => {
     return (
       <li
         className={`archive__item${(!hovered || hovered === book.name)?'':' fade'}`}
         key={book.name}
         onMouseEnter={() => setHovered(book.name)}
       >
-        <Link to={book.summary.chapters[0].slug} className="archive__link clearfix">
-          <span className="archive__time">{ getDate(book.summary) }</span>
-          <span className="archive__title">{ book.summary.title }</span>
-          <span className="archive__tag">{ book.summary.category }</span>
-          <span className="archive__meta">{ formatNum(book.summary.wordCount) }字</span>
+        <Link to={book.summary[0].slug} className="archive__link clearfix">
+          <span className="archive__time">{ getDate(book) }</span>
+          <span className="archive__title">{ book.title }</span>
+          <span className="archive__tag">{ book.category }</span>
+          <span className="archive__meta">{ formatNum(book.wordCount) }字</span>
         </Link>
       </li>
     )
@@ -61,9 +61,9 @@ export default function({ data }) {
 
   const getWordCountSum = () => {
     let sum = 0;
-    books.filter(book => filtered == "全部" || filtered === book.summary.category)
+    books.filter(book => filtered == "全部" || filtered === book.category)
          .forEach(book => {
-            sum += book.summary.wordCount;
+            sum += book.wordCount;
          });
     return sum;
   }
@@ -117,19 +117,17 @@ export const query = graphql`
         logo
       }
     }
-    allBook(sort: {fields: summary___index, order: DESC}) {
+    allBook(sort: {fields: index, order: DESC}) {
     nodes {
+      slug
+      wordCount
+      title
+      start
+      end
+      category
+      index
       summary {
         slug
-        wordCount
-        title
-        start
-        end
-        category
-        index
-        chapters {
-          slug
-        }
       }
       name
     }
