@@ -33,9 +33,9 @@ exports.sourceNodes = async ({
   getNodesByType,
 }) => {
   const { createNode, createNodeField } = actions
-  // 先测试一本书
   const books = await getBooks()
   return Promise.allSettled(books.map(book => {
+    if (book.status !== 4) return;
     book.category = book.category === 1 ? '小说' : '随笔';
     return getChapters(book.slug)
     .then(chapters => {
