@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: "叶夕青兮",
-    description: "生活便是一本书，一壶茶，一个阳光明媚的下午！",
+    description: "只有在创作的时候，我才能感觉到自己是在真实地活着",
      about: `叶夕青兮，程序员，喜欢写作。
     `,
     email: "zhangshiyu1992@hotmail.com",
