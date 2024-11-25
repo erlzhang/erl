@@ -17,6 +17,12 @@ module.exports = {
           layout: require.resolve(`./src/layouts/index.js`)
         }
     },
-    require.resolve(`./plugins/source-echo`)
+    require.resolve(`./plugins/source-echo`),
+    {
+      resolve: 'gatsby-plugin-simple-analytics',
+      options: {
+        trackPageViews: true
+      }
+    }
   ],
 };
