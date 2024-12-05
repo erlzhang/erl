@@ -5,7 +5,7 @@ export default function({ site }) {
   return (
     <footer className="site-footer">
       <Link to="/">{ site.title }</Link> 
-      © { new Date().getFullYear() }
+      © 2012-{ new Date().getFullYear() }
     </footer>
   )
 }
