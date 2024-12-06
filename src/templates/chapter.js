@@ -106,6 +106,7 @@ export const query = graphql`
       title
       name
       content
+      wordCount
     }
   }
 `

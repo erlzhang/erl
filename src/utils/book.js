@@ -7,10 +7,9 @@ export function getDate({ start, end }) {
   return str;
 }
 
-
 export function getAllCategories(books) {
   let categories = ["全部"];
-  books.forEach(book => {
+  books.forEach((book) => {
     const category = book.category;
     if (!categories.includes(category)) {
       categories.push(category);
@@ -20,15 +19,32 @@ export function getAllCategories(books) {
 }
 
 export function formatNum(num) {
-  let str = num + "";
-  let result = "";
-  let len = str.length;
-  for(let i = 1; i <= len; i++) {
-    result = str[len - i] + result;
-    if (i % 3 == 0 && i < len) {
-      result = "," + result;
-    }
-  }
-  return result;
+  return `总计${Math.floor(num / 10000)}万字，预计阅读${calculateReadingTime(
+    num
+  )}`;
 }
 
+/**
+ * 计算中文文本的预计阅读时间
+ * @param {number} wordCount - 文本的总字数
+ * @param {number} readingSpeed - 每分钟的阅读速度（单位：字/分钟，默认值为 400）
+ * @returns {string} - 返回预计阅读时间（格式：x 小时 x 分钟 或 x 分钟）
+ */
+function calculateReadingTime(wordCount, readingSpeed = 400) {
+  if (wordCount <= 0 || readingSpeed <= 0) {
+    return "输入的字数或阅读速度必须大于0";
+  }
+
+  // 计算总分钟数
+  const totalMinutes = Math.ceil(wordCount / readingSpeed);
+
+  // 如果时间超过60分钟，转换为小时和分钟
+  if (totalMinutes >= 60) {
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    return minutes === 0 ? `${hours}小时` : `${hours}小时${minutes}分钟`;
+  }
+
+  // 如果小于60分钟，仅显示分钟
+  return `${totalMinutes} 分钟`;
+}
