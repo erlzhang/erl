@@ -130,9 +130,21 @@
   margin: 0 0 1.5rem;
 }
 .icon__list .text__link {
-  font-size: 0.875rem;
+  font-size: 13px;
+  // text-decoration: underline;
+}
+.icon__list .text__link + .text__link {
   margin-left: 5px;
+}
+.icon__list .text__link:hover {
   text-decoration: underline;
+}
+.icon__list .text__link:after {
+  content: "|";
+  margin-left: 5px;
+}
+.icon__list .text__link:last-child:after {
+  content: "";
 }
 .icon__link svg {
   margin: 0 5px;
