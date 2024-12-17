@@ -30,7 +30,7 @@ export default function ({ site, book }) {
   return (
     <div className="subscribe">
       <div className="subscribe-hint">
-        <p>预计每年更新一次，您可以订阅以接收更新提示</p>
+        <p>不定期年更，您可以订阅以接收更新提示</p>
       </div>
       <form className="subscribe__form" onSubmit={handleSubmit}>
         <input
