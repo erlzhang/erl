@@ -3,6 +3,7 @@ import Footer from "../components/footer";
 import { graphql, Link } from "gatsby";
 import { getAllCategories, getDate, formatNum } from "../utils/book";
 import Social from "../components/social";
+import Subscribe from "../components/subscribe";
 
 function SiteInfo({ site }) {
   return (
@@ -13,19 +14,6 @@ function SiteInfo({ site }) {
     </>
   );
 }
-
-// <li
-//         className={`archive__item${(!hovered || hovered === book.name)?'':' fade'}`}
-//         key={book.name}
-//         onMouseEnter={() => setHovered(book.name)}
-//       >
-//         <Link to={book.summary[0].slug} className="archive__link clearfix">
-//           <span className="archive__time">{ getDate(book) }</span>
-//           <span className="archive__title">{ book.title }</span>
-//           <span className="archive__tag">{ book.category }</span>
-//           <span className="archive__meta">{ formatNum(book.wordCount) }字</span>
-//         </Link>
-//       </li>
 
 function BookEntry({ book, fade, onHover }) {
   return (
@@ -64,20 +52,6 @@ export default function ({ data }) {
           fade={!hovered || hovered === book.name}
           onHover={() => setHovered(book.name)}
         />
-        // <li
-        //   className={`archive__item${
-        //     !hovered || hovered === book.name ? "" : " fade"
-        //   }`}
-        //   key={book.name}
-        //   onMouseEnter={() => setHovered(book.name)}
-        // >
-        //   <Link to={book.summary[0].slug} className="archive__link clearfix">
-        //     <span className="archive__time">{getDate(book)}</span>
-        //     <span className="archive__title">{book.title}</span>
-        //     <span className="archive__tag">{book.category}</span>
-        //     <span className="archive__meta">{formatNum(book.wordCount)}字</span>
-        //   </Link>
-        // </li>
       );
     });
 
@@ -93,16 +67,6 @@ export default function ({ data }) {
     );
   });
 
-  const getWordCountSum = () => {
-    let sum = 0;
-    books
-      .filter((book) => filtered == "全部" || filtered === book.category)
-      .forEach((book) => {
-        sum += book.wordCount;
-      });
-    return sum;
-  };
-
   return (
     <div className="archive-container">
       <main className="archive">
@@ -113,14 +77,9 @@ export default function ({ data }) {
           <div className="archive__list">
             <div className="archive__tags">{tags}</div>
             <div onMouseLeave={() => setHovered(0)}>{items}</div>
-            {/* <div className="archive__bottom">
-              <span className="archive__meta">
-                总字数：{formatNum(getWordCountSum())}
-              </span>
-            </div> */}
           </div>
         </div>
-        {/* <Subscribe></Subscribe> */}
+        <Subscribe></Subscribe>
         <Footer site={site}></Footer>
       </main>
     </div>
