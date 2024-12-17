@@ -130,9 +130,11 @@
   margin: 0 0 1.5rem;
 }
 .icon__list .text__link {
-  font-size: 0.875rem;
-  margin-left: 5px;
+  font-size: 13px;
   // text-decoration: underline;
+}
+.icon__list .text__link + .text__link {
+  margin-left: 5px;
 }
 .icon__list .text__link:hover {
   text-decoration: underline;
