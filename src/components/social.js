@@ -17,6 +17,14 @@ export default function ({ site }) {
         {/* <Github></Github> */}
         Github
       </a>
+      <a
+        href="https://corner.erl.im"
+        className="text__link"
+        target="_blank"
+        title="日常流水账"
+      >
+        博客
+      </a>
     </div>
   );
 }
