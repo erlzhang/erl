@@ -6,7 +6,7 @@ import { graphql, Link } from "gatsby";
 function SiteInfo({ site }) {
   return (
     <>
-      <h1>{site.title}</h1>
+      <Link href="/"><h1>{site.title}</h1></Link>
       <div className="archive__header_intro">
         {site.description}
       </div>
