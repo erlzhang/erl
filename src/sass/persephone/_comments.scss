@@ -1,5 +1,8 @@
 .comment-container {
   padding: 1.5rem 0;
+  min-height: 100vh;
+  max-width: 800px;
+  margin:3.5rem auto;
 }
 .comment-left {
   float: left;
@@ -20,7 +23,7 @@
 }
 .comment__box {
   position: relative;
-  border: 1px solid var(--lighter);
+  border: 1px solid var(--light);
   @include flex;
   @include flex-column;
   border-radius: 0.35rem;
@@ -34,7 +37,7 @@
   }
   &:after {
     border-width: 8px;
-    border-color: transparent var(--lighter) transparent transparent;
+    border-color: transparent var(--light) transparent transparent;
     left: -16px;
     top: 11px;
     z-index: 4;
@@ -52,7 +55,7 @@
   @include flex;
 }
 .comment__box_top {
-  border-bottom: 1px solid var(--lighter);
+  border-bottom: 1px solid var(--light);
 }
 @media screen and (max-width: 500px) {
   .comment__box_top {
@@ -60,7 +63,7 @@
   }
 }
 .comment__box_bottom {
-  border-top: 1px solid var(--lighter);
+  border-top: 1px solid var(--light);
   justify-content: flex-end;
 }
 .comment__hint {
@@ -75,7 +78,7 @@
 }
 .comment__smileys_box {
   padding: 4px 10px;
-  border-top: 1px solid var(--lighter);
+  border-top: 1px solid var(--light);
   position: absolute;
   bottom: 40px;
   left: 0;
@@ -103,6 +106,9 @@
 .input-group {
   position: relative;
   padding-left: 35px;
+}
+.input-group + .input-group {
+  border-left: 1px solid var(--light);
 }
 .input-label {
   position: absolute;

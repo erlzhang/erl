@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-import { Link } from "gatsby";
 import axios from "axios";
 
-export default function ({ site, book }) {
+export default function ({
+  action,
+  hint,
+  btnText,
+  btnLoading,
+  successMsg,
+  errorMsg
+}) {
   const [email, setEmail] = useState("");
   const [state, setState] = useState("");
-  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     setEmail(e.target.value);
@@ -16,7 +21,7 @@ export default function ({ site, book }) {
     setState("loading");
 
     axios
-      .post(".netlify/functions/subscribe", {
+      .post("/.netlify/functions/" + action, {
         email: email,
       })
       .then((res) => {
@@ -29,9 +34,16 @@ export default function ({ site, book }) {
 
   return (
     <div className="subscribe">
-      <div className="subscribe-hint">
+      {
+        hint && (
+          <div className="subscribe-hint">
+            {hint}
+          </div>
+        )
+      }
+      {/* <div className="subscribe-hint">
         <p>不定期年更，您可以订阅以接收更新提示</p>
-      </div>
+      </div> */}
       <form className="subscribe__form" onSubmit={handleSubmit}>
         <input
           placeholder="输入您的邮箱"
@@ -40,13 +52,13 @@ export default function ({ site, book }) {
           onChange={handleChange}
         ></input>
         <button disabled={state === "loading"}>
-          {state === "loading" ? "订阅中..." : "订阅"}
+          {state === "loading" ? btnLoading : btnText}
         </button>
       </form>
 
       <p className={`form-state-msg state-${state}`}>
-        {state === "success" && "😍 订阅成功，记得关注邮件哦~"}
-        {state === "error" && "😥 哎呀失败了，重新尝试一次吧！"}
+        {state === "success" && successMsg}
+        {state === "error" && errorMsg}
       </p>
     </div>
   );

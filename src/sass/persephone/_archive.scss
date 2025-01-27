@@ -3,6 +3,7 @@
 }
 .archive {
   width: 100%;
+  min-height: 100%;
   max-width: 620px;
   margin: 3rem auto 0;
   padding: 1.5rem 1rem 0;
@@ -178,4 +179,10 @@
   .archive__item .archive__tag {
     display: none;
   }
+}
+
+.page-title {
+  margin-top: 3rem;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
 }

@@ -23,7 +23,7 @@ const handler = async (event) => {
       key: process.env.NETLIFY_EMAILS_PROVIDER_API_KEY,
     });
 
-    const res = await mg.lists.members.createMember("erl@mail.erl.im", {
+    const res = await mg.lists.members.createMember(process.env.MAIL_LIST, {
       address: email,
       subscribed: "yes", // optional, modifiable on website
       upsert: "yes", // optional, choose yes to insert if not exist, or update it exist

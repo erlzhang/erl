@@ -19,6 +19,8 @@ body {
 .container {
   background-color: var(--bg-color);
   color: var(--text-color);
+  width: 100vw;
+  min-height: 100vh;
 }
 main {
   flex: 1;

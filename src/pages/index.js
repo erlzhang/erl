@@ -1,19 +1,8 @@
 import React, { useState } from "react";
-import Footer from "../components/footer";
 import { graphql, Link } from "gatsby";
 import { getAllCategories, getDate, formatNum } from "../utils/book";
-import Social from "../components/social";
 import Subscribe from "../components/subscribe";
-
-function SiteInfo({ site }) {
-  return (
-    <>
-      <h1>{site.title}</h1>
-      <div className="archive__header_intro">{site.description}</div>
-      <Social site={site}></Social>
-    </>
-  );
-}
+import Layout from "../layouts/page";
 
 function BookEntry({ book, fade, onHover }) {
   return (
@@ -68,21 +57,20 @@ export default function ({ data }) {
   });
 
   return (
-    <div className="archive-container">
-      <main className="archive">
-        <div className="archive__header">
-          <SiteInfo site={site}></SiteInfo>
+    <Layout site={site}>
+        <div className="archive__list">
+          <div className="archive__tags">{tags}</div>
+          <div onMouseLeave={() => setHovered(0)}>{items}</div>
         </div>
-        <div className="archive__content">
-          <div className="archive__list">
-            <div className="archive__tags">{tags}</div>
-            <div onMouseLeave={() => setHovered(0)}>{items}</div>
-          </div>
-        </div>
-        <Subscribe></Subscribe>
-        <Footer site={site}></Footer>
-      </main>
-    </div>
+        <Subscribe
+          action="subscribe"
+          hint="不定期年更，您可以订阅以接收更新提示"
+          btnText="订阅"
+          btnLoading="订阅中..."
+          successMsg="😍 订阅成功，记得关注邮件哦~"
+          errorMsg="😥 哎呀失败了，重新尝试一次吧！"
+        ></Subscribe>
+    </Layout>
   );
 }
 
