@@ -21,7 +21,7 @@ export default function ({
     setState("loading");
 
     axios
-      .post(".netlify/functions/" + action, {
+      .post("/.netlify/functions/" + action, {
         email: email,
       })
       .then((res) => {
