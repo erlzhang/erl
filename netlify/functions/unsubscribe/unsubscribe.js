@@ -23,7 +23,7 @@ const handler = async (event) => {
       key: process.env.NETLIFY_EMAILS_PROVIDER_API_KEY,
     });
 
-    const res = await mg.lists.members.updateMember("test@mail.erl.im", email, {
+    const res = await mg.lists.members.updateMember(process.env.MAIL_LIST, email, {
       subscribed: false, // optional, modifiable on website
     });
     return {
