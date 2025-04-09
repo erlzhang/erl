@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: "叶夕青兮",
-    description: "只有在创作的时候，我才能感觉到自己是在真实地活着",
-    about: `叶夕青兮，程序员，喜欢写作。
+    title: "苍陌",
+    description: "在荒芜处刻字，于裂缝中掌灯",
+    about: `我并不存在
     `,
     email: "zhangshiyu1992@hotmail.com",
     github: "erlzhang",
