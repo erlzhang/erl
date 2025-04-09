@@ -10,7 +10,7 @@ function SiteInfo({ site }) {
       <div className="archive__header_intro">
         {site.description}
       </div>
-      <Social site={site}></Social>
+      <!--<Social site={site}></Social>-->
     </>
   );
 }
