@@ -76,9 +76,7 @@ export const query = graphql`
         title
         imgPrefix
         logo
-        email
-        about
-        github
+        description
       }
     }
     chapter(slug: {eq: $slug}) {
