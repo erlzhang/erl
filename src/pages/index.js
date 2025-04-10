@@ -64,7 +64,7 @@ export default function ({ data }) {
         </div>
         <Subscribe
           action="subscribe"
-          hint="不定期年更，您可以订阅以接收更新提示"
+          hint="若愿听我落笔，我将偶寄只言片语"
           btnText="订阅"
           btnLoading="订阅中..."
           successMsg="订阅成功"
