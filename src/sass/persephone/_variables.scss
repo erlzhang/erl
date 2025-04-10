@@ -1,16 +1,16 @@
 :root {
-  --dark: #374F5B;
-  --grayer: #6D7B7B;
-  --gray: #A9C0BA;
-  --gray-light: #ced4da;
-  --light-gray: #adb5bd;
-  --light: #dee2e6;
-  --lighter: #ECEBE8;
-  --lightest: #F6F4EF;
-  --white: #fff;
-  --blue: #849B87;
-  --red: #dc3545;
+  --dark: #343a40;          /* 原样保留：深灰，主文字 */
+  --grayer: #495057;        /* 稍暗的灰蓝 */
+  --gray: #6c757d;          /* 中性色 */
+  --gray-light: #ced4da;    /* 亮灰层次 */
+  --light-gray: #adb5bd;    /* 页面次要文字 */
+  --light: #dee2e6;         /* 背景边框 */
+  --lighter: #e9ecef;       /* 更亮区域 */
+  --lightest: #fafafa;      /* 背景主色，略调白一点 */
+  --white: #ffffff;
 
+  --blue: #1d6fa5;          /* 新高亮色：比 #007bff 稍暗，冷静但醒目 */
+  --red: #c0392b;           /* 稍偏文艺红，仍保持清晰 */
   --content-width: 750px;
   --summary-width: 300px;
 
