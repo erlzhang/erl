@@ -11,7 +11,7 @@
 .archive__header {
   z-index: 1;
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     margin-bottom: 0.75rem;
     font-weight: 500;
     a:hover {
@@ -79,7 +79,7 @@
 .archive__desc {
   padding: 5px 0;
   font-size: 0.9rem;
-  color: var(--gray);
+  color: var(--grayer);
 }
 .archive__meta {
   // text-align: right;

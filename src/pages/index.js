@@ -64,11 +64,11 @@ export default function ({ data }) {
         </div>
         <Subscribe
           action="subscribe"
-          hint="不定期年更，您可以订阅以接收更新提示"
+          hint="若愿听我落笔，我将偶寄只言片语"
           btnText="订阅"
           btnLoading="订阅中..."
-          successMsg="😍 订阅成功，记得关注邮件哦~"
-          errorMsg="😥 哎呀失败了，重新尝试一次吧！"
+          successMsg="订阅成功"
+          errorMsg="订阅失败"
         ></Subscribe>
     </Layout>
   );
