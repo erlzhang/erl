@@ -7,7 +7,6 @@ module.exports = {
     email: "zhangshiyu1992@hotmail.com",
     github: "erlzhang",
     imgPrefix: "https://erlim.oss-cn-hongkong.aliyuncs.com",
-    logo: "/img/logo.svg",
   },
   plugins: [
     "gatsby-plugin-sass",
@@ -17,12 +16,6 @@ module.exports = {
         layout: require.resolve(`./src/layouts/index.js`),
       },
     },
-    require.resolve(`./plugins/source-echo`),
-    {
-      resolve: "gatsby-plugin-simple-analytics",
-      options: {
-        trackPageViews: true,
-      },
-    },
+    require.resolve(`./plugins/source-echo`)
   ],
 };

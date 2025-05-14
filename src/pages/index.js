@@ -64,7 +64,7 @@ export default function ({ data }) {
         </div>
         <Subscribe
           action="subscribe"
-          hint="若愿听我落笔，我将偶寄只言片语"
+          hint=""
           btnText="订阅"
           btnLoading="订阅中..."
           successMsg="订阅成功"
@@ -92,7 +92,6 @@ export const query = graphql`
         email
         github
         imgPrefix
-        logo
       }
     }
     allBook(sort: { fields: [end, start], order: [DESC, DESC] }) {

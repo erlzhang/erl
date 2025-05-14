@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Ellipsis,
-  Logo
 } from "../components/icons";
 import { graphql, Link } from "gatsby"
 import Footer from "../components/footer";
@@ -20,7 +19,7 @@ export default function Chapter({ data }) {
       <div className="body__inner">
         <div className="book-header" role="navigation">
           <Link to="/" className="logo">
-            <Logo/>
+            { site.title }
           </Link>
           <h1 className="book-title">《{ bookTitle }》</h1>
           <ContextConsumer>
@@ -75,7 +74,6 @@ export const query = graphql`
       siteMetadata {
         title
         imgPrefix
-        logo
         description
       }
     }

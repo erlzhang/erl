@@ -15,7 +15,7 @@ export default function App({data}) {
         btnText="取消订阅"
         btnLoading="取消中..."
         successMsg="您已成功取消订阅~"
-        errorMsg="😥 哎呀失败了，重新尝试一次吧！"
+        errorMsg="失败了，可重新尝试"
       />
     </Layout>
   );
@@ -30,7 +30,6 @@ export const query = graphql`
         email
         github
         imgPrefix
-        logo
       }
     }
   }

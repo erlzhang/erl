@@ -19,7 +19,6 @@
     "fetch": "^1.1.0",
     "gatsby": "^4.19.0",
     "gatsby-plugin-catch-links": "^4.21.0",
-    "gatsby-plugin-feed": "^5.14.0",
     "gatsby-plugin-sass": "^4.1.0",
     "gatsby-plugin-transition-link": "^1.20.5",
     "gatsby-remark-external-links": "0.0.4",
@@ -27,10 +26,6 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "sass": "^1.32.8",
-    "mailgun.js": "^9.1.2",
-    "node-fetch": "^2.6.12"
-  },
-  "devDependencies": {
-    "gatsby-plugin-simple-analytics": "^1.0.4"
+    "mailgun.js": "^9.1.2"
   }
 }
