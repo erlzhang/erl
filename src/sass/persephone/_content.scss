@@ -80,7 +80,7 @@
 }
 .content img {
   border: 0;
-  max-width: 90%;
+  max-width: 100%;
 	vertical-align: middle;
 }
 .content hr {
@@ -280,4 +280,24 @@
       }
     }
   }
+}
+
+.content figure {
+  text-align: center;
+  margin: 10px 0;
+  display: grid;
+  justify-items: center;
+  &[data-cols="2"] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  &[data-cols="3"] {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.content figcaption {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--gray);
+  grid-column: 1 / -1;
+  margin-top: 5px;
 }
