@@ -261,6 +261,7 @@
   color: var(--gray);
   width: 100%;
   text-align: left;
+  padding-left: 30px;
   &:before {
     @include pseudo();
     left: 0;
