@@ -261,9 +261,6 @@
   color: var(--gray);
   width: 100%;
   text-align: left;
-  hr {
-    display: none;
-  }
   &:before {
     @include pseudo();
     left: 0;
@@ -272,12 +269,10 @@
     height: 1px;
     top: 0;
   }
-  ol {
-    li {
-      font-size: 0.875rem;
-      p {
-        display: inline;
-      }
+  li {
+    font-size: 0.875rem;
+    p {
+      display: inline;
     }
   }
 }
