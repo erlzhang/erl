@@ -69,7 +69,7 @@ export const Head = ({data}) => {
 }
 
 export const query = graphql`
-  query($slug: String!, $book: String!) {
+  query($slug: String!, $book: String!, $volume: String) {
     site {
       siteMetadata {
         title
@@ -103,6 +103,24 @@ export const query = graphql`
       name
       content
       wordCount
+    }
+    volume(slug: {eq: $volume}) {
+      title
+      slug
+      content
+      wordCount
+      prev {
+        title
+        indexPath
+      }
+      next {
+        title
+        indexPath
+      }
+      summary {
+        slug
+        title
+      }
     }
   }
 `

@@ -5,12 +5,14 @@ import Subscribe from "../components/subscribe";
 import Layout from "../layouts/page";
 
 function BookEntry({ book, fade, onHover }) {
+
+  const slug = book.structureType === 1 ? book.slug : book.indexPath;
   return (
     <div
       className={`archive__item${fade ? "" : " fade"}`}
       onMouseEnter={() => onHover(book.name)}
     >
-      <Link to={book.summary[0].slug} className="archive__link clearfix">
+      <Link to={slug} className="archive__link clearfix">
         <h2 class="archive__item_header">
           <span className="archive__title">{book.title}</span>
           <span className="archive__time">{getDate(book)}</span>
@@ -103,10 +105,9 @@ export const query = graphql`
         end
         category
         content
-        summary {
-          slug
-        }
+        indexPath
         name
+        structureType
       }
     }
   }

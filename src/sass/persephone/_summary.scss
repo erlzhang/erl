@@ -62,6 +62,11 @@
     font-size: 1.1rem;
     color: var(--text-color)
   }
+  h2 {
+    font-size: 1.35rem;
+    margin-top: 1rem;
+    color: var(--text-color);
+  }
   p {
     font-size: 0.75rem;
     line-height: 1.25rem;
@@ -92,6 +97,16 @@
 }
 .book-summary ul.summary li ul {
   padding-left: 10px;
+}
+.book-summary ul.summary-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--border-color);
+  padding: 10px 0;
+}
+.book-summary ul.summary-nav li {
+  padding: 8px 15px;
 }
 @media (max-width: 1240px) {
   .book__wrapper.with-summary .book-summary {

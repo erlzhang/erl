@@ -21,6 +21,11 @@ exports.getBook = (slug) => {
   return axios.get(BASE_URL + '/books/' + slug);
 }
 
+exports.getVolumes = (slug) => {
+  return axios.get(BASE_URL + '/volumes/' + slug + '/getFull')
+    .then(res => res.data.data);
+}
+
 const getSummary = (slug) => {
   return axios.get(BASE_URL + '/summary/' + slug + '/getFull');
 }

@@ -11,6 +11,10 @@ function ChapterLayout({ data, children }) {
     const prev = post.prev;
     const next = post.next;
     const book = data.book;
+    const volume = data.volume;
+
+    const chapters = volume ? volume.summary : book.summary;
+    const wordCount = volume ? volume.wordCount : book.wordCount;
 
     return (
       <>
@@ -24,6 +28,9 @@ function ChapterLayout({ data, children }) {
                return(<div className={_className} id="bookMain">
                 <Summary
                   book={book}
+                  volume={volume}
+                  chapters={chapters}
+                  wordCount={wordCount}
                   handleClose={() => set({showSummary: false})}
                 >
                   <Contact site={site}/>

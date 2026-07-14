@@ -14,7 +14,7 @@ export default function App({data}) {
         hint="输入您的邮箱，我们将停止向您发送邮件。"
         btnText="取消订阅"
         btnLoading="取消中..."
-        successMsg="您已成功取消订阅~"
+        successMsg="您已成功取消订阅"
         errorMsg="失败了，可重新尝试"
       />
     </Layout>

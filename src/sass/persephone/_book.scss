@@ -3,6 +3,12 @@
   width: 100vw;
   height: 100vh;
 }
+.book-page-site {
+  font-size: 1rem;
+}
+.book-container {
+
+}
 .book__cover {
   height: 100vh;
   width: 35%;
@@ -14,6 +20,22 @@
 .book__img {
   height: 100vh;
   width: auto;
+}
+.book__header {
+  margin-bottom: 2.5rem;
+}
+.book__parts {
+  margin-bottom: 0.75rem;
+}
+.book__parts {
+  span {
+    display: inline-block;
+    line-height: 1.5rem;
+    font-weight: bold;
+  }
+  .active {
+    border-bottom: 1px solid var(--grayer);
+  }
 }
 .book__content {
   width: 60%;
@@ -34,16 +56,21 @@
   flex-wrap: nowrap;
 }
 .book__title {
-  margin: 2.5rem 0;
+  margin: 2.5rem 0 1rem 0;
   color: var(--dark);
-  font-size: 2.85rem;
+  font-size: 1.85rem;
 }
 .book__desc {
   color: var(--dark-light);
   line-height: 2rem;
 }
+.archive__desc.volume__desc {
+  color: var(--gray);
+  line-height: 1.5rem;
+  margin-top: 5px;
+}
 .book__meta {
-  margin: 1.5rem 0 -1rem 0;
+  margin: 0.5rem 0 0 0;
   color: var(--light-gray);
   font-size: 0.85rem;
   span {

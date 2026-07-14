@@ -33,7 +33,7 @@ function ListItem({ item, onClick, className }) {
   );
 }
 
-export default function ({ book, handleClose, content, children }) {
+export default function ({ book, handleClose, content, children, chapters, volume, wordCount }) {
   const handleLinkClick = (e) => {
     const width = window.innerWidth;
     if (width > 1200) {
@@ -45,7 +45,7 @@ export default function ({ book, handleClose, content, children }) {
     }, 300);
   };
 
-  const chapters = book.summary;
+  // const chapters = book.summary;
 
   const posts = chapters.map((post) => {
     return (
@@ -64,9 +64,21 @@ export default function ({ book, handleClose, content, children }) {
           <Close></Close>
         </span>
         <div className="header">
-          <h1>{book.title}</h1>
+          {
+            volume ?
+            <Link
+              title={book.title}
+              to={'/' + book.name}
+            ><h1>{book.title}</h1>
+            </Link> :
+            <h1>{book.title}</h1>
+          }
+          {
+            volume &&
+            <h2>{volume.title}</h2>
+          }
           <div className="summary__desc">
-            {formatNum(book.wordCount)}
+            {formatNum(wordCount)}
             {/* {book.content.split("\n").map((line) => {
               return <p>{line}</p>;
             })} */}
@@ -75,6 +87,25 @@ export default function ({ book, handleClose, content, children }) {
         <nav role="navigation">
           <ul className="summary">{posts}</ul>
         </nav>
+        {
+          volume &&
+          <nav role="navigation">
+            <ul className="summary-nav">
+              {
+                volume.prev &&
+                <Link to={volume.prev.indexPath}>
+                  <li>上一卷：{volume.prev.title}</li>
+                </Link>
+              }
+              {
+                volume.next &&
+                <Link to={volume.next.indexPath}>
+                  <li>下一卷：{volume.next.title}</li>
+                </Link>
+              }
+            </ul>
+          </nav>
+        }
         <div className="summary__footer">{children}</div>
       </div>
     </>

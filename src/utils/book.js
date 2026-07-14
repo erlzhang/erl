@@ -1,9 +1,14 @@
 export function getDate({ start, end }) {
-  let str = "";
-  if (start !== end) {
-    str += start + "-";
+  let str = start + "";
+  if (start === end) {
+    return start;
   }
-  str += end;
+  if (!end) {
+    str += "至今";
+  } else {
+    str += '-' + end;
+  }
+  // str += end;
   return str;
 }
 
