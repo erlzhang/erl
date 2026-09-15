@@ -48,9 +48,9 @@ exports.sourceNodes = async ({
         .then(({volumes, parts}) => {
           console.log('volumes', volumes, parts);
           volumes.forEach(volume => {
-            if (!volume.published) {
-              return;
-            }
+            // if (!volume.published) {
+            //   return;
+            // }
             setPathOfVolumeChapter(volume.chapters, volume.slug);
             setPrevAndNextOfChapters(volume.chapters);
           });
