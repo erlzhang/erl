@@ -45,6 +45,7 @@ exports.sourceNodes = async ({
     if (book.structureType === 1) {
       // todo 连载单独处理
       return getVolumes(book.slug)
+      .then(({volumes, parts}) => {
           volumes.forEach(volume => {
             // if (!volume.published) {
             //   return;
